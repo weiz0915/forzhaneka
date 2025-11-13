@@ -87,7 +87,6 @@
         to   { opacity: 1; transform: scale(1.4); }
     }
 
-    /* Плавающий фон с вашими фотками + параллакс */
     .bg-photo {
         position: fixed;
         width: 230px;
@@ -166,7 +165,6 @@
         to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* Логотип D ❤️ J */
     .logo {
         position: fixed;
         top: 12px;
@@ -271,7 +269,6 @@
         margin-bottom: 14px;
     }
 
-    /* Слайдер с цитатами */
     .quote {
         margin: 18px auto 22px;
         padding: 12px 16px;
@@ -293,7 +290,6 @@
         opacity: 1;
     }
 
-    /* Таймер */
     .timer-block {
         margin: 18px auto 10px;
         padding: 10px 14px;
@@ -372,7 +368,6 @@
         opacity: 0.9;
     }
 
-    /* Галерея */
     .gallery-title {
         margin-top: 26px;
         font-size: 17px;
@@ -402,7 +397,6 @@
         box-shadow: 0 0 25px rgba(255, 195, 255, 0.9);
     }
 
-    /* Падающие сердечки */
     .heart {
         position: fixed;
         top: -10px;
@@ -420,7 +414,6 @@
         }
     }
 
-    /* Секретные фразы */
     .secret-msg {
         position: fixed;
         bottom: 15%;
@@ -487,15 +480,12 @@
 <div class="glow g2"></div>
 <div class="glow g3"></div>
 
-<!-- Звезды создадим скриптом -->
 
-<!-- Фон с вашими фотками -->
 <div class="bg-photo one"></div>
 <div class="bg-photo two"></div>
 <div class="bg-photo three"></div>
 <div class="bg-photo four"></div>
 
-<!-- Секретное сообщение -->
 <div id="secret" class="secret-msg"></div>
 
 <div class="wrapper">
@@ -533,7 +523,6 @@
         
        <div class="quote" id="quote-box"></div>
 
-        <!-- Таймер -->
         <div class="timer-block">
             <div class="timer-title">мы вместе уже</div>
             <div class="timer-values" id="timer">считаю наши дни...</div>
@@ -594,13 +583,11 @@
     </div>
 </div>
 
-<!-- Музыка -->
 <audio id="loveSong" loop>
     <source src="ketpe.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-    // Звезды
     function createStars(count) {
         for (let i = 0; i < count; i++) {
             const star = document.createElement("div");
@@ -614,7 +601,6 @@
     }
     createStars(80);
 
-    // Падающие сердечки
     setInterval(function () {
         const heart = document.createElement("div");
         heart.classList.add("heart");
@@ -625,7 +611,6 @@
         setTimeout(() => heart.remove(), 6000);
     }, 350);
 
-    // Секретные фразы
     const secretEl = document.getElementById("secret");
     const secretPhrases = [
         "Я выбрал тебя не случайно",
@@ -648,12 +633,10 @@
         }, 2000);
     }
 
-    // Двойной клик на ПК
     document.addEventListener("dblclick", function () {
         showSecretMessage();
     });
 
-    // Двойное касание на телефоне
     let lastTap = 0;
     document.addEventListener("touchend", function () {
         const currentTime = Date.now();
@@ -664,7 +647,6 @@
         lastTap = currentTime;
     });
 
-    // Показ скрытого письма
     function showMessage() {
         const msg = document.getElementById("hidden-message");
         msg.style.display = "block";
@@ -672,7 +654,6 @@
     }
     window.showMessage = showMessage;
 
-    // Музыка
     let isPlaying = false;
     function toggleMusic() {
         const audio = document.getElementById("loveSong");
@@ -695,7 +676,6 @@
     }
     window.toggleMusic = toggleMusic;
 
-    // Таймер: считаем, сколько вы вместе
     const startDate = new Date(2024, 10, 11); // 11.11.2024
     function updateTimer() {
         const now = new Date();
@@ -719,7 +699,6 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
-    // Typed-эффект заголовка
     const typedEl = document.getElementById("typed-title");
     if (typedEl) {
         const fullText = typedEl.getAttribute("data-text") || typedEl.textContent;
@@ -735,7 +714,6 @@
         typeNext();
     }
 
-    // Слайдер с цитатами
     const quotes = [
         "С тобой даже обычный день кажется особенным",
         "Иногда я просто молчу, потому что хочу просто быть рядом с тобой",
@@ -761,7 +739,6 @@
         setInterval(showNextQuote, 5000);
     }
 
-    // Параллакс для фона и фоток
     const parallaxElements = [
         ...document.querySelectorAll(".bg-photo"),
         ...document.querySelectorAll(".glow")
