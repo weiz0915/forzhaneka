@@ -412,6 +412,23 @@
         }
     }
 
+    @keyframes invitePop {
+        0% {
+            transform: scale(0.9) translateY(18px);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(255, 120, 200, 0.0);
+        }
+        60% {
+            transform: scale(1.02) translateY(-4px);
+            opacity: 1;
+            box-shadow: 0 0 26px rgba(255, 120, 220, 0.9);
+        }
+        100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+    }
+
     .secret-msg {
         position: fixed;
         bottom: 15%;
@@ -450,24 +467,50 @@
         opacity: 0.85;
     }
 
-    /* ===== ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ - СЮРПРИЗ ===== */
+    .dias-name {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 3px;
+    }
+
+    .dias-secret {
+        margin-top: 6px;
+        font-size: 12px;
+        color: #ffe7ff;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+    }
+
+    .dias-secret.show {
+        opacity: 1;
+        max-height: 60px;
+    }
+
+    /* ===== ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ ===== */
     .invite-section {
-        margin-top: 24px;
+        margin-top: 28px;
         display: flex;
         justify-content: center;
         max-height: 0;
         opacity: 0;
-        transform: translateY(16px) scale(0.96);
+        transform: scale(0.97) translateY(12px);
         pointer-events: none;
         overflow: hidden;
-        transition: max-height 0.7s ease, opacity 0.7s ease, transform 0.7s ease;
+        transition: max-height 0.6s ease, opacity 0.45s ease, transform 0.45s ease;
     }
 
-    .invite-section.invite-show {
-        max-height: 900px;
+    .invite-section.show {
+        max-height: 1400px;
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: scale(1) translateY(0);
         pointer-events: auto;
+    }
+
+    .invite-section.show .invite-card {
+        animation: invitePop 0.55s ease-out;
     }
 
     .invite-card {
@@ -511,7 +554,7 @@
         display: flex;
         align-items: center;
         gap: 14px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
     .invite-photo {
@@ -543,7 +586,7 @@
         padding: 5px 11px;
         border-radius: 999px;
         border: 1px solid rgba(255, 210, 255, 0.7);
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .invite-dot {
@@ -567,7 +610,13 @@
     .invite-subtitle {
         font-size: 13px;
         color: #f4ddff;
-        margin-top: 3px;
+        margin-top: 2px;
+    }
+
+    .invite-small {
+        font-size: 13px;
+        color: #ffeefe;
+        margin: 6px 0 8px;
     }
 
     .invite-divider {
@@ -615,6 +664,76 @@
     .invite-sign span {
         color: #ffd5ff;
         font-weight: 700;
+    }
+
+    .evening-block {
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(13, 4, 32, 0.9);
+        border: 1px solid rgba(255, 210, 255, 0.35);
+    }
+
+    .evening-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #ffeefe;
+    }
+
+    .evening-block ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #fbe7ff;
+    }
+
+    .kaz-line {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #ffeefe;
+        font-style: italic;
+    }
+
+    .playlist {
+        margin-top: 10px;
+        padding: 8px 10px;
+        border-radius: 14px;
+        background: rgba(14, 6, 35, 0.9);
+        border: 1px solid rgba(255, 210, 255, 0.3);
+        font-size: 13px;
+        color: #ffeefe;
+    }
+
+    .playlist-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .playlist ul {
+        margin: 0;
+        padding-left: 18px;
+        line-height: 1.6;
+    }
+
+    .date-timer {
+        margin-top: 10px;
+        padding: 8px 10px;
+        border-radius: 14px;
+        background: rgba(11, 3, 30, 0.95);
+        border: 1px solid rgba(255, 210, 255, 0.35);
+        font-size: 13px;
+        color: #ffeefe;
+    }
+
+    .date-timer-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .date-timer-values {
+        font-family: "Arial", monospace;
     }
 
     .invite-btn-row {
@@ -791,7 +910,7 @@
         <div class="btn-row">
             <button onclick="toggleMusic()">Наша песня - KETPE 🎵</button>
             <button onclick="showMessage()">Нажми сюда, жаным 💌</button>
-            <button onclick="showInvite()" id="inviteTrigger">Сюрприз на 16.11 ✨</button>
+            <button id="openInvite">Сюрприз для тебя 🎁</button>
         </div>
 
         <div id="music-status">Если музыка не играет, возможно браузер еще не разрешил звук, можно нажать кнопку еще раз 🎧</div>
@@ -825,44 +944,47 @@
             </p>
         </div>
 
-        <!-- ПРИГЛАСИТЕЛЬНАЯ - СКРЫТЫЙ СЮРПРИЗ -->
+        <!-- ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ -->
         <section class="invite-section" id="invite">
             <div class="invite-card">
                 <div class="invite-top-row">
                     <div class="invite-photo">
-                        <!-- Можно поменять на us3/us4/us6 -->
+                        <!-- Фото из твоих 6 - можно поменять на любую: us3/4/5/6 -->
                         <img src="us5.jpg.jpeg" alt="Мы с тобой">
                     </div>
                     <div>
                         <div class="invite-tag">
                             <span class="invite-dot"></span>
-                            16.11.2025 • маленькое свидание
+                            Приглашение на свидание • 16.11.2025
                         </div>
                         <h2 class="invite-title">Жанека 💖</h2>
-                        <div class="invite-subtitle">это мой маленький сюрприз для тебя</div>
+                        <div class="invite-subtitle">маленький неоновый секрет от Диаса</div>
                     </div>
                 </div>
+
+                <p class="invite-small">
+                    Просто захотел сделать для тебя еще один маленький момент, который останется только у нас.
+                </p>
 
                 <div class="invite-divider"></div>
 
                 <p class="invite-text">
-                    Сегодня у нас особенный день - уже целый год как мы вместе.  
-                    Я хочу отметить его не просто словами на экране, а вечерним моментом вдвоем.
+                    Сегодня у нас первая годовщина. За этот год у нас было много всего, но самое главное - мы все равно вместе.
                 </p>
 
                 <p class="invite-text">
-                    Приглашаю тебя на наше свидание в честь этого года.
+                    Я хочу отметить этот день по-особенному, не просто в переписке, а рядом с тобой. Поэтому зову тебя на свидание.
                 </p>
 
                 <div class="invite-details">
                     <div class="invite-row">
                         <div class="invite-label">Место</div>
-                        <div class="invite-value">секретное, такси отвезет прямо туда</div>
+                        <div class="invite-value">секретное - такси отвезет прямо туда 😉</div>
                     </div>
                     <div class="invite-row">
                         <div class="invite-label">Дресс-код</div>
                         <div class="invite-value">
-                            любая одежда, в любом образе ты для меня самая красивая
+                            любая одежда. В любом образе ты для меня самая красивая и особенная.
                         </div>
                     </div>
                     <div class="invite-row">
@@ -876,13 +998,38 @@
                 </div>
 
                 <p class="invite-text">
-                    Спасибо тебе за этот год - за смех, поддержку и за то, что ты рядом.  
-                    Я хочу, чтобы впереди у нас было еще больше таких дат и моментов только для нас двоих.
+                    Спасибо тебе за этот год - за твой смех, твои голосовые, твои объятия и за то, что ты не сдаешь нас.
                 </p>
 
+                <div class="evening-block">
+                    <div class="evening-title">В этот вечер я хочу:</div>
+                    <ul>
+                        <li>просто смотреть на тебя вживую, а не через экран</li>
+                        <li>слышать твой смех рядом, а не из телефона</li>
+                        <li>запомнить этот вечер как наш маленький новый старт</li>
+                    </ul>
+                </div>
+
+                <p class="kaz-line">
+                    Жанека, сен мен үшін ең жылы, ең жақын адамсың. Осындай кештер бізде әлі де көп болсыншы.
+                </p>
+
+                <div class="playlist">
+                    <div class="playlist-title">Музыка на наш вечер:</div>
+                    <ul>
+                        <li>KETPE</li>
+                        <li>и еще пару треков, которые я включу уже там, чтобы ты только слушала и кайфовала</li>
+                    </ul>
+                </div>
+
+                <div class="date-timer">
+                    <div class="date-timer-title">До нашего свидания осталось:</div>
+                    <div class="date-timer-values" id="dateTimer">считаю минуты...</div>
+                </div>
+
                 <p class="invite-sign">
-                    Приходи, <span>жаным</span>.  
-                    Я очень жду этот вечер с тобой.
+                    Просто приходи, <span>жаным</span>.
+                    Остальное я беру на себя. Пусть этот вечер будет чисто нашим.
                 </p>
 
                 <div class="invite-btn-row">
@@ -892,7 +1039,7 @@
                 </div>
 
                 <p class="invite-dias">
-                    Все это - для нас двоих,  
+                    Этот вечер я придумал и жду для нас двоих,  
                     <span>твой Диас</span> ✨
                 </p>
             </div>
@@ -909,10 +1056,13 @@
 
         <div class="signature">
             С любовью, от всего сердца и от всей души, всегда твой<br>
-            <b>Dias</b> 🫶
+            <b id="diasName" class="dias-name">Dias</b> 🫶
             <div class="tiny-line">
                 Если ты это читаешь, значит я снова думаю о тебе и снова влюбляюсь в тебя
                 как в первый день наших отношений ❤️
+            </div>
+            <div id="diasSecret" class="dias-secret">
+                Я всегда буду на твоей стороне, даже если весь мир будет против. Просто знай это.
             </div>
         </div>
     </div>
@@ -921,21 +1071,22 @@
 <!-- ОКНО ПОСЛЕ "Я ПРИДУ" -->
 <div class="invite-overlay" id="inviteOverlay">
     <div class="invite-overlay-card">
-        <h3>Жанека, я очень рад 💘</h3>
+        <h3>Жанека, ура 💘</h3>
         <p>
             Значит, в <b>15:30</b> 16.11.2025  
-            у нас будет еще один особенный вечер только для двоих.
+            мир точно станет чуточку счастливее.
         </p>
         <p class="invite-overlay-small">
-            Спасибо за этот год рядом со мной.  
-            С тобой я чувствую себя по-настоящему счастливым.
+            Я обещаю сделать этот вечер особенным - только для нас двоих.
+            Спасибо, что уже год ты рядом, с тобой я чувствую себя по-настоящему счастливым.
         </p>
         <p class="invite-overlay-small">
-            Я постараюсь сделать этот вечер таким, чтобы ты запомнила его надолго.  
-            Твой Диас 💫
+            Этот сюрприз я готовил для тебя заранее,
+            потому что ты для меня намного важнее, чем ты думаешь.
+            - твой Диас 💫
         </p>
         <button class="invite-overlay-close" id="inviteClose">
-            хорошо, я жду этот вечер
+            хорошо, жду этот вечер
         </button>
     </div>
 </div>
@@ -1056,6 +1207,33 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
+    // Таймер до свидания
+    const dateTarget = new Date(2025, 10, 16, 15, 30, 0); // 16.11.2025 15:30
+    function updateDateTimer() {
+        const now = new Date();
+        let diff = dateTarget - now;
+        const dateTimerEl = document.getElementById("dateTimer");
+        if (!dateTimerEl) return;
+
+        if (diff <= 0) {
+            dateTimerEl.textContent = "мы уже на свидании или вспоминаем этот вечер 😊";
+            return;
+        }
+
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / (1000 * 60)) % 60;
+        const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        dateTimerEl.textContent =
+            days + " дн " +
+            hours.toString().padStart(2, "0") + " ч " +
+            minutes.toString().padStart(2, "0") + " мин " +
+            seconds.toString().padStart(2, "0") + " сек";
+    }
+    updateDateTimer();
+    setInterval(updateDateTimer, 1000);
+
     const typedEl = document.getElementById("typed-title");
     if (typedEl) {
         const fullText = typedEl.getAttribute("data-text") || typedEl.textContent;
@@ -1128,19 +1306,19 @@
         applyParallax(xRatio, yRatio);
     }, { passive: true });
 
-    // Показ пригласительной как сюрприза
-    function showInvite() {
-        const inviteSection = document.getElementById("invite");
-        if (!inviteSection) return;
-        inviteSection.classList.add("invite-show");
-        inviteSection.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-    window.showInvite = showInvite;
-
-    // Логика для "Я приду"
+    // Логика для пригласительной
+    const openInvite = document.getElementById("openInvite");
+    const inviteSection = document.getElementById("invite");
     const inviteYes = document.getElementById("inviteYes");
     const inviteOverlay = document.getElementById("inviteOverlay");
     const inviteClose = document.getElementById("inviteClose");
+
+    if (openInvite && inviteSection) {
+        openInvite.addEventListener("click", () => {
+            inviteSection.classList.add("show");
+            inviteSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+    }
 
     if (inviteYes && inviteOverlay) {
         inviteYes.addEventListener("click", () => {
@@ -1151,6 +1329,16 @@
     if (inviteClose && inviteOverlay) {
         inviteClose.addEventListener("click", () => {
             inviteOverlay.classList.remove("show");
+        });
+    }
+
+    // Секрет при клике на Dias
+    const diasName = document.getElementById("diasName");
+    const diasSecret = document.getElementById("diasSecret");
+
+    if (diasName && diasSecret) {
+        diasName.addEventListener("click", () => {
+            diasSecret.classList.toggle("show");
         });
     }
 </script>
