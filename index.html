@@ -206,6 +206,14 @@
         transform: translateX(50%) translateY(2px);
     }
 
+    .greeting-line {
+        font-size: 13px;
+        color: #ffe9ff;
+        opacity: 0.9;
+        margin-bottom: 4px;
+        font-style: italic;
+    }
+
     .date {
         font-size: 12px;
         letter-spacing: 2px;
@@ -269,6 +277,13 @@
         color: #ffd1f2;
         margin-top: 6px;
         margin-bottom: 14px;
+    }
+
+    .secret-click {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 3px;
     }
 
     .quote {
@@ -380,6 +395,74 @@
         opacity: 0.9;
     }
 
+    .compliment-box {
+        margin-top: 10px;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        padding: 10px 14px;
+        border-radius: 16px;
+        background: rgba(20, 7, 45, 0.95);
+        border: 1px solid rgba(255, 210, 255, 0.6);
+        box-shadow: 0 0 20px rgba(255, 160, 230, 0.7);
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(8px);
+        transition: opacity 0.35s ease, max-height 0.35s ease, transform 0.35s ease;
+    }
+
+    .compliment-box.show {
+        opacity: 1;
+        max-height: 120px;
+        transform: translateY(0);
+    }
+
+    .moments-block,
+    .plans-block {
+        margin-top: 22px;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(15, 5, 35, 0.9);
+        border: 1px solid rgba(255, 200, 255, 0.5);
+        box-shadow: 0 0 20px rgba(255, 150, 230, 0.6);
+    }
+
+    .moments-title,
+    .plans-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #ffeefe;
+    }
+
+    .moments-block ul,
+    .plans-block ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #fbe7ff;
+    }
+
+    .angry-secret {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #ffeafe;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.35s ease, max-height 0.35s ease;
+        text-align: left;
+    }
+
+    .angry-secret.show {
+        opacity: 1;
+        max-height: 80px;
+    }
+
     .gallery-title {
         margin-top: 26px;
         font-size: 17px;
@@ -423,23 +506,6 @@
         to {
             transform: translateY(110vh);
             opacity: 0;
-        }
-    }
-
-    @keyframes invitePop {
-        0% {
-            transform: scale(0.9) translateY(18px);
-            opacity: 0;
-            box-shadow: 0 0 0 rgba(255, 120, 200, 0.0);
-        }
-        60% {
-            transform: scale(1.02) translateY(-4px);
-            opacity: 1;
-            box-shadow: 0 0 26px rgba(255, 120, 220, 0.9);
-        }
-        100% {
-            transform: scale(1) translateY(0);
-            opacity: 1;
         }
     }
 
@@ -525,6 +591,23 @@
 
     .invite-section.show .invite-card {
         animation: invitePop 0.55s ease-out;
+    }
+
+    @keyframes invitePop {
+        0% {
+            transform: scale(0.9) translateY(18px);
+            opacity: 0;
+            box-shadow: 0 0 0 rgba(255, 120, 200, 0.0);
+        }
+        60% {
+            transform: scale(1.02) translateY(-4px);
+            opacity: 1;
+            box-shadow: 0 0 26px rgba(255, 120, 220, 0.9);
+        }
+        100% {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
     }
 
     .invite-card {
@@ -809,6 +892,89 @@
         margin-top: 4px;
     }
 
+    /* Конфетти сердечки */
+    .confetti-heart {
+        position: fixed;
+        font-size: 18px;
+        color: #ff4f9a;
+        pointer-events: none;
+        z-index: 1000;
+        animation: confettiUp 1.4s ease-out forwards;
+    }
+
+    @keyframes confettiUp {
+        0% {
+            transform: translate(0, 0) scale(0.8);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(var(--dx), var(--dy)) scale(1.1);
+            opacity: 0;
+        }
+    }
+
+    /* Интро при заходе */
+    .intro-overlay {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top, #3b123b, #05000b);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    .intro-inner {
+        text-align: center;
+    }
+
+    .intro-text {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .intro-dots span {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ffd6ff;
+        margin: 0 3px;
+        animation: introDot 0.9s infinite ease-in-out;
+    }
+
+    .intro-dots span:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+
+    .intro-dots span:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    @keyframes introDot {
+        0%, 100% { transform: translateY(0); opacity: 0.6; }
+        50% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    body.intro-done .intro-overlay {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    /* Reveal on scroll */
+    .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     @media (max-width: 600px) {
         .wrapper {
             padding: 30px 12px 40px;
@@ -849,6 +1015,13 @@
 </head>
 <body>
 
+<div class="intro-overlay" id="introOverlay">
+    <div class="intro-inner">
+        <div class="intro-text">Подожди, Жанека...<br>загружаю наш год ❤️</div>
+        <div class="intro-dots"><span></span><span></span><span></span></div>
+    </div>
+</div>
+
 <div class="logo">D❤️J</div>
 
 <div class="glow g1"></div>
@@ -864,6 +1037,7 @@
 
 <div class="wrapper">
     <div class="card">
+        <div id="greeting" class="greeting-line"></div>
         <div class="date">11.11.2025 • наш первый год вместе</div>
         <h1>
             <span id="typed-title" data-text="Жанека, с нашей годовщиной ❤️">
@@ -881,11 +1055,16 @@
             я хочу опираться и за кого хочу держаться.
         </p>
         <p class="text">
-            Как бы мы ни ругались и ни ссорились, внутри все равно одно чувство:
+            Как бы мы ни ругались и ни 
+            <span id="angryTrigger" class="secret-click">ссорились</span>, внутри все равно одно чувство:
             я хочу быть с тобой и сохранить нас. В наши ссоры мне тяжелее всего
             не из-за слов, а из-за мысли, что вдруг могу тебя потерять. Поэтому
             для меня очень ценно, что после всего мы снова рядом и снова выбираем друг друга.
         </p>
+        <div id="angrySecret" class="angry-secret">
+            Если ты сейчас на меня злишься и читаешь это, знай, что я все равно люблю тебя и хочу, чтобы ты была рядом.
+        </div>
+
         <p class="text highlight">
             <span class="glow-word">Жаным</span>, я очень сильно люблю тебя
             и верю, что мы дойдем до конца, до кольца ❤️
@@ -906,11 +1085,14 @@
             <button onclick="toggleMusic()">Наша песня - KETPE 🎵</button>
             <button onclick="showMessage()">Нажми сюда, жаным 💌</button>
             <button id="openInvite">Сюрприз для тебя 🎁</button>
+            <button id="complimentBtn">Комплимент для тебя 💗</button>
         </div>
 
         <div id="music-status">Если музыка не играет, возможно браузер еще не разрешил звук, можно нажать кнопку еще раз 🎧</div>
 
-        <div id="hidden-message">
+        <div id="complimentBox" class="compliment-box"></div>
+
+        <div id="hidden-message" class="reveal-on-scroll">
             <p><b>Моей Жанеке:</b></p>
             <p>
                 Спасибо тебе за твое терпение, за то, что выдерживаешь мой характер,
@@ -939,12 +1121,30 @@
             </p>
         </div>
 
+        <div class="moments-block reveal-on-scroll">
+            <div class="moments-title">Три момента, которые я особенно помню:</div>
+            <ul>
+                <li>Тот день, когда мы серьезно поссорились, но все равно выбрали остаться вместе.</li>
+                <li>Момент, когда я понял, что хочу не просто встречаться, а идти с тобой до конца.</li>
+                <li>Тот раз, когда я смотрел на тебя и подумал: "вот с этим человеком я хочу жить".</li>
+            </ul>
+        </div>
+
+        <div class="plans-block reveal-on-scroll">
+            <div class="plans-title">Мои планы на нас:</div>
+            <ul>
+                <li>дойти с тобой до гранта и переезда в Астану;</li>
+                <li>сделать так, чтобы у тебя было больше улыбок, чем слез;</li>
+                <li>не отпускать тебя из своей жизни по глупости;</li>
+                <li>делать еще больше таких штук только для нас двоих.</li>
+            </ul>
+        </div>
+
         <!-- ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ -->
-        <section class="invite-section" id="invite">
+        <section class="invite-section reveal-on-scroll" id="invite">
             <div class="invite-card">
                 <div class="invite-top-row">
                     <div class="invite-photo">
-                        <!-- Фото из твоих 6 - можно поменять на любую: us3/4/5/6 -->
                         <img src="us5.jpg.jpeg" alt="Мы с тобой">
                     </div>
                     <div>
@@ -998,9 +1198,9 @@
                 <div class="evening-block">
                     <div class="evening-title">В этот вечер я хочу:</div>
                     <ul>
-                        <li>просто смотреть на тебя вживую, а не через экран</li>
-                        <li>слышать твой смех рядом, а не из телефона</li>
-                        <li>запомнить этот вечер как наш маленький новый старт</li>
+                        <li>просто смотреть на тебя вживую, а не через экран;</li>
+                        <li>слышать твой смех рядом, а не из телефона;</li>
+                        <li>запомнить этот вечер как наш маленький новый старт.</li>
                     </ul>
                 </div>
 
@@ -1032,15 +1232,15 @@
         </section>
         <!-- КОНЕЦ ПРИГЛАСИТЕЛЬНОЙ -->
 
-        <div class="gallery-title">Несколько наших маленьких моментов, которые я люблю:</div>
-        <div class="gallery">
+        <div class="gallery-title reveal-on-scroll">Несколько наших маленьких моментов, которые я люблю:</div>
+        <div class="gallery reveal-on-scroll">
             <img src="us3.jpg.jpeg" alt="Наш момент 1">
             <img src="us4.jpg.jpeg" alt="Наш момент 2">
             <img src="us5.jpg.jpeg" alt="Наш момент 3">
             <img src="us6.jpg.jpeg" alt="Наш момент 4">
         </div>
 
-        <div class="signature">
+        <div class="signature reveal-on-scroll">
             С любовью, от всего сердца и от всей души, всегда твой<br>
             <b id="diasName" class="dias-name">Dias</b> 🫶
             <div class="tiny-line">
@@ -1082,6 +1282,20 @@
 </audio>
 
 <script>
+    // Интро
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.body.classList.add("intro-done");
+        }, 1300);
+    });
+
+    function vibrate(ms) {
+        if (window.navigator && navigator.vibrate) {
+            navigator.vibrate(ms);
+        }
+    }
+
+    // Звезды
     function createStars(count) {
         for (let i = 0; i < count; i++) {
             const star = document.createElement("div");
@@ -1095,6 +1309,7 @@
     }
     createStars(80);
 
+    // Падающие сердечки на фоне
     setInterval(function () {
         const heart = document.createElement("div");
         heart.classList.add("heart");
@@ -1105,6 +1320,7 @@
         setTimeout(() => heart.remove(), 6000);
     }, 350);
 
+    // Секретные фразы по двойному тапу/клику
     const secretEl = document.getElementById("secret");
     const secretPhrases = [
         "Я выбрал тебя не случайно",
@@ -1141,22 +1357,27 @@
         lastTap = currentTime;
     });
 
+    // Скрытое письмо
     function showMessage() {
         const msg = document.getElementById("hidden-message");
         if (!msg) return;
         msg.classList.toggle("show");
+        vibrate(20);
         if (msg.classList.contains("show")) {
             msg.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     }
     window.showMessage = showMessage;
 
+    // Музыка
     let isPlaying = false;
     function toggleMusic() {
         const audio = document.getElementById("loveSong");
         const status = document.getElementById("music-status");
 
         if (!audio) return;
+
+        vibrate(15);
 
         if (!isPlaying) {
             audio.play().then(() => {
@@ -1173,6 +1394,7 @@
     }
     window.toggleMusic = toggleMusic;
 
+    // Таймер "мы вместе"
     const startDate = new Date(2024, 10, 11); // 11.11.2024
     function updateTimer() {
         const now = new Date();
@@ -1223,6 +1445,7 @@
     updateDateTimer();
     setInterval(updateDateTimer, 1000);
 
+    // Печатающийся заголовок
     const typedEl = document.getElementById("typed-title");
     if (typedEl) {
         const fullText = typedEl.getAttribute("data-text") || typedEl.textContent;
@@ -1238,6 +1461,7 @@
         typeNext();
     }
 
+    // Цитаты
     const quotes = [
         "С тобой даже обычный день кажется особенным",
         "Иногда я просто молчу, потому что хочу просто быть рядом с тобой",
@@ -1263,6 +1487,7 @@
         setInterval(showNextQuote, 5000);
     }
 
+    // Параллакс для фона
     const parallaxElements = [
         ...document.querySelectorAll(".bg-photo"),
         ...document.querySelectorAll(".glow")
@@ -1295,7 +1520,7 @@
         applyParallax(xRatio, yRatio);
     }, { passive: true });
 
-    // Логика для пригласительной
+    // Пригласительная
     const openInvite = document.getElementById("openInvite");
     const inviteSection = document.getElementById("invite");
     const inviteYes = document.getElementById("inviteYes");
@@ -1305,21 +1530,46 @@
     if (openInvite && inviteSection) {
         openInvite.addEventListener("click", () => {
             inviteSection.classList.toggle("show");
+            vibrate(20);
             if (inviteSection.classList.contains("show")) {
                 inviteSection.scrollIntoView({ behavior: "smooth", block: "center" });
             }
         });
     }
 
+    // Конфетти сердечки
+    function launchConfettiHearts() {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        for (let i = 0; i < 28; i++) {
+            const heart = document.createElement("div");
+            heart.classList.add("confetti-heart");
+            heart.textContent = "💖";
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 80 + Math.random() * 80;
+            const dx = Math.cos(angle) * distance;
+            const dy = Math.sin(angle) * distance * -1;
+            heart.style.left = centerX + "px";
+            heart.style.top = centerY + "px";
+            heart.style.setProperty("--dx", dx + "px");
+            heart.style.setProperty("--dy", dy + "px");
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        }
+    }
+
     if (inviteYes && inviteOverlay) {
         inviteYes.addEventListener("click", () => {
             inviteOverlay.classList.add("show");
+            vibrate(40);
+            launchConfettiHearts();
         });
     }
 
     if (inviteClose && inviteOverlay) {
         inviteClose.addEventListener("click", () => {
             inviteOverlay.classList.remove("show");
+            vibrate(20);
         });
     }
 
@@ -1332,6 +1582,65 @@
             diasSecret.classList.toggle("show");
         });
     }
+
+    // Секрет "если ты злишься"
+    const angryTrigger = document.getElementById("angryTrigger");
+    const angrySecret = document.getElementById("angrySecret");
+
+    if (angryTrigger && angrySecret) {
+        angryTrigger.addEventListener("click", () => {
+            angrySecret.classList.toggle("show");
+        });
+    }
+
+    // Рандомные комплименты
+    const complimentBtn = document.getElementById("complimentBtn");
+    const complimentBox = document.getElementById("complimentBox");
+    const compliments = [
+        "Ты правда очень красивая, даже когда говоришь, что нет.",
+        "Если ты улыбаешься, день уже норм.",
+        "Серьезно, я не знаю, как мне так повезло с тобой.",
+        "С тобой даже обычная переписка кажется чем-то особенным.",
+        "Когда ты смеешься, я автоматически становлюсь счастливее.",
+        "Ты для меня намного важнее, чем думаешь."
+    ];
+
+    if (complimentBtn && complimentBox) {
+        complimentBtn.addEventListener("click", () => {
+            const text = compliments[Math.floor(Math.random() * compliments.length)];
+            complimentBox.textContent = text;
+            complimentBox.classList.add("show");
+            vibrate(15);
+        });
+    }
+
+    // Dynamic greeting
+    const greetingEl = document.getElementById("greeting");
+    if (greetingEl) {
+        const now = new Date();
+        const h = now.getHours();
+        let text = "";
+        if (h >= 6 && h < 12) {
+            text = "Доброе утро, Жанека. Я опять думаю о тебе с самого утра😘";
+        } else if (h >= 12 && h < 22) {
+            text = "Хороший день, потому что ты есть❤️";
+        } else {
+            text = "Если ты это читаешь ночью, знай: я все равно хочу, чтобы ты выспалась, жаным❤️";
+        }
+        greetingEl.textContent = text;
+    }
+
+    // Reveal on scroll (для мобилки и не только)
+    const revealEls = document.querySelectorAll(".reveal-on-scroll");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(el => observer.observe(el));
 </script>
 
 </body>
