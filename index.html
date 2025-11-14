@@ -450,6 +450,246 @@
         opacity: 0.85;
     }
 
+    /* ===== ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ ===== */
+    .invite-section {
+        margin-top: 28px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .invite-card {
+        max-width: 560px;
+        width: 100%;
+        background: radial-gradient(circle at top, rgba(255, 160, 220, 0.3), rgba(32, 10, 60, 0.96));
+        border-radius: 24px;
+        padding: 18px 16px 18px;
+        box-shadow:
+            0 0 22px rgba(255, 120, 200, 0.8),
+            0 20px 40px rgba(0, 0, 0, 0.75);
+        border: 1px solid rgba(255, 210, 255, 0.7);
+        position: relative;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .invite-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background: conic-gradient(
+            from 200deg,
+            rgba(255, 0, 200, 0.3),
+            rgba(0, 229, 255, 0.26),
+            transparent,
+            rgba(255, 0, 200, 0.3)
+        );
+        mix-blend-mode: screen;
+        opacity: 0.45;
+        pointer-events: none;
+    }
+
+    .invite-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .invite-top-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px;
+    }
+
+    .invite-photo {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid rgba(255, 210, 255, 0.9);
+        box-shadow: 0 0 18px rgba(255, 150, 230, 0.9);
+    }
+
+    .invite-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .invite-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #ffe7ff;
+        background: rgba(12, 4, 30, 0.8);
+        padding: 5px 11px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 210, 255, 0.7);
+        margin-bottom: 6px;
+    }
+
+    .invite-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ff80ff;
+        box-shadow: 0 0 8px #ff80ff;
+    }
+
+    .invite-title {
+        margin: 0;
+        font-size: 19px;
+        font-weight: 700;
+        color: #ffe9ff;
+        text-shadow:
+            0 0 8px #ff9ad6,
+            0 0 18px rgba(255, 120, 200, 0.9);
+    }
+
+    .invite-subtitle {
+        font-size: 13px;
+        color: #f4ddff;
+        margin-top: 3px;
+    }
+
+    .invite-divider {
+        height: 1px;
+        background: linear-gradient(to right, transparent, #ffb4ff, transparent);
+        margin: 8px 0 10px;
+    }
+
+    .invite-text {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 8px;
+        color: #ffeefe;
+    }
+
+    .invite-details {
+        margin: 10px 0 8px;
+        font-size: 13px;
+    }
+
+    .invite-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    .invite-label {
+        width: 80px;
+        flex-shrink: 0;
+        color: #f4cfff;
+        font-weight: 600;
+    }
+
+    .invite-value {
+        color: #ffeefe;
+    }
+
+    .invite-sign {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #ffeefe;
+    }
+
+    .invite-sign span {
+        color: #ffd5ff;
+        font-weight: 700;
+    }
+
+    .invite-btn-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .invite-btn {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 10px 22px;
+    }
+
+    .invite-dias {
+        margin-top: 8px;
+        font-size: 12px;
+        color: #f1d4ff;
+        text-align: right;
+    }
+
+    .invite-dias span {
+        color: #ff9fff;
+        font-weight: 700;
+    }
+
+    /* Оверлей после "Я приду" */
+    .invite-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(3, 0, 12, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 999;
+        padding: 18px;
+    }
+
+    .invite-overlay.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .invite-overlay-card {
+        max-width: 340px;
+        width: 100%;
+        background: radial-gradient(circle at top, #3a1a6f, #180827);
+        border-radius: 20px;
+        padding: 18px 16px 16px;
+        text-align: center;
+        border: 1px solid rgba(255, 210, 255, 0.8);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.85);
+        color: #f7e8ff;
+    }
+
+    .invite-overlay-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+        text-shadow: 0 0 8px #ff80ff;
+    }
+
+    .invite-overlay-card p {
+        font-size: 13px;
+        line-height: 1.7;
+        margin-bottom: 8px;
+    }
+
+    .invite-overlay-small {
+        font-size: 12px;
+        opacity: 0.9;
+    }
+
+    .invite-overlay-close {
+        border: none;
+        background: transparent;
+        color: #ffb6ff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 4px;
+    }
+
     @media (max-width: 600px) {
         h1 {
             font-size: 25px;
@@ -467,6 +707,16 @@
         .gallery img {
             height: 120px;
         }
+        .invite-card {
+            padding: 16px 12px 16px;
+        }
+        .invite-top-row {
+            align-items: flex-start;
+        }
+        .invite-photo {
+            width: 72px;
+            height: 72px;
+        }
     }
 </style>
 </head>
@@ -477,7 +727,6 @@
 <div class="glow g1"></div>
 <div class="glow g2"></div>
 <div class="glow g3"></div>
-
 
 <div class="bg-photo one"></div>
 <div class="bg-photo two"></div>
@@ -515,11 +764,11 @@
             и верю, что мы дойдем до конца, до кольца ❤️
         </p>
         <p class="text">
-    Я хочу чтобы когда ты открывала этот сайт, ты чувствовала то же тепло,
-    которое я чувствую к тебе
-      </p>
-        
-       <div class="quote" id="quote-box"></div>
+            Я хочу чтобы когда ты открывала этот сайт, ты чувствовала то же тепло,
+            которое я чувствую к тебе
+        </p>
+
+        <div class="quote" id="quote-box"></div>
 
         <div class="timer-block">
             <div class="timer-title">мы вместе уже</div>
@@ -562,6 +811,83 @@
             </p>
         </div>
 
+        <!-- ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ -->
+        <section class="invite-section" id="invite">
+            <div class="invite-card">
+                <div class="invite-top-row">
+                    <div class="invite-photo">
+                        <!-- Фото из твоих 6 — можно поменять на любую: us3/4/5/6 -->
+                        <img src="us5.jpg.jpeg" alt="Мы с тобой">
+                    </div>
+                    <div>
+                        <div class="invite-tag">
+                            <span class="invite-dot"></span>
+                            Приглашение на свидание • 16.11.2025
+                        </div>
+                        <h2 class="invite-title">Жанека 💖</h2>
+                        <div class="invite-subtitle">маленький неоновый секрет от Диаса</div>
+                    </div>
+                </div>
+
+                <div class="invite-divider"></div>
+
+                <p class="invite-text">
+                    Сегодня особенный день — ровно год, как мы вместе.  
+                    В честь нашей годовщины я хочу отпраздновать его по-особенному — только вдвоём.
+                </p>
+
+                <p class="invite-text">
+                    Приглашаю тебя на свидание в честь нашего года вместе.
+                </p>
+
+                <div class="invite-details">
+                    <div class="invite-row">
+                        <div class="invite-label">Место</div>
+                        <div class="invite-value">секретное — такси отвезёт прямо туда 😉</div>
+                    </div>
+                    <div class="invite-row">
+                        <div class="invite-label">Дресс-код</div>
+                        <div class="invite-value">
+                            любая одежда. В любом образе ты для меня самая красивая и особенная.
+                        </div>
+                    </div>
+                    <div class="invite-row">
+                        <div class="invite-label">Время</div>
+                        <div class="invite-value">15:30</div>
+                    </div>
+                    <div class="invite-row">
+                        <div class="invite-label">Дата</div>
+                        <div class="invite-value">16.11.2025</div>
+                    </div>
+                </div>
+
+                <p class="invite-text">
+                    Спасибо тебе за этот год — за твой смех, уют рядом, поддержку
+                    и за то, что остаёшься собой.  
+                    Я хочу, чтобы впереди у нас было ещё больше таких дат,
+                    тёплых вечеров и наших общих воспоминаний.
+                </p>
+
+                <p class="invite-sign">
+                    Приходи, <span>жаным</span>.  
+                    Пусть этот вечер станет началом ещё одного,
+                    ещё более красивого года наших отношений.
+                </p>
+
+                <div class="invite-btn-row">
+                    <button class="invite-btn" id="inviteYes">
+                        Я приду 💖
+                    </button>
+                </div>
+
+                <p class="invite-dias">
+                    Этот вечер я придумал и жду для нас двоих,  
+                    <span>твой Диас</span> ✨
+                </p>
+            </div>
+        </section>
+        <!-- КОНЕЦ ПРИГЛАСИТЕЛЬНОЙ -->
+
         <div class="gallery-title">Несколько наших маленьких моментов, которые я люблю:</div>
         <div class="gallery">
             <img src="us3.jpg.jpeg" alt="Наш момент 1">
@@ -578,6 +904,30 @@
                 как в первый день наших отношений ❤️
             </div>
         </div>
+    </div>
+</div>
+
+<!-- ОКНО ПОСЛЕ "Я ПРИДУ" -->
+<div class="invite-overlay" id="inviteOverlay">
+    <div class="invite-overlay-card">
+        <h3>Жанека, ура 💘</h3>
+        <p>
+            Значит, в <b>15:30</b> 16.11.2025  
+            мир точно станет чуточку счастливее.
+        </p>
+        <p class="invite-overlay-small">
+            Я обещаю сделать этот вечер особенным — только для нас двоих.  
+            Спасибо, что уже год ты рядом со мной,  
+            с тобой я чувствую себя по-настоящему счастливым.
+        </p>
+        <p class="invite-overlay-small">
+            Этот сюрприз я готовил для тебя заранее,  
+            потому что ты важна мне намного сильнее, чем ты думаешь.  
+            — твой Диас 💫
+        </p>
+        <button class="invite-overlay-close" id="inviteClose">
+            хорошо, жду этот вечер
+        </button>
     </div>
 </div>
 
@@ -768,6 +1118,23 @@
         const yRatio = y / window.innerHeight;
         applyParallax(xRatio, yRatio);
     }, { passive: true });
+
+    // Логика для пригласительной "Я приду"
+    const inviteYes = document.getElementById("inviteYes");
+    const inviteOverlay = document.getElementById("inviteOverlay");
+    const inviteClose = document.getElementById("inviteClose");
+
+    if (inviteYes && inviteOverlay) {
+        inviteYes.addEventListener("click", () => {
+            inviteOverlay.classList.add("show");
+        });
+    }
+
+    if (inviteClose && inviteOverlay) {
+        inviteClose.addEventListener("click", () => {
+            inviteOverlay.classList.remove("show");
+        });
+    }
 </script>
 
 </body>
