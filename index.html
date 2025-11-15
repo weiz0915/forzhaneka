@@ -19,7 +19,7 @@
         font-family: "Arial", sans-serif;
         color: #fff;
         overflow-x: hidden;
-        background: radial-gradient(circle at top, #ffc0e8 0, #ff7aa2 25%, #2a1844 65%, #05000b 100%);
+        background: radial-gradient(circle at top, #ffc0ff 0, #ff5fa4 22%, #2c174a 60%, #05000b 100%);
         background-size: 300% 300%;
         animation: bgMove 20s ease-in-out infinite;
     }
@@ -33,7 +33,7 @@
     .glow {
         position: fixed;
         border-radius: 50%;
-        filter: blur(40px);
+        filter: blur(45px);
         opacity: 0.7;
         z-index: 0;
         pointer-events: none;
@@ -43,15 +43,15 @@
     .glow.g1 {
         width: 260px;
         height: 260px;
-        background: rgba(255, 184, 255, 0.9);
+        background: rgba(255, 184, 255, 0.95);
         top: -40px;
         left: -30px;
         animation: floatGlow 18s ease-in-out infinite alternate;
     }
 
     .glow.g2 {
-        width: 260px;
-        height: 260px;
+        width: 270px;
+        height: 270px;
         background: rgba(120, 110, 255, 0.9);
         bottom: -60px;
         right: -40px;
@@ -59,9 +59,9 @@
     }
 
     .glow.g3 {
-        width: 200px;
-        height: 200px;
-        background: rgba(255, 120, 180, 0.8);
+        width: 220px;
+        height: 220px;
+        background: rgba(255, 120, 180, 0.9);
         bottom: 15%;
         left: 40%;
         animation: floatGlow 20s ease-in-out infinite alternate-reverse;
@@ -148,18 +148,18 @@
     }
 
     .card {
-        max-width: 820px;
+        max-width: 860px;
         width: 100%;
-        padding: 35px 26px 38px;
-        border-radius: 30px;
-        background: rgba(8, 3, 20, 0.9);
-        border: 1px solid rgba(255, 184, 255, 0.45);
+        padding: 35px 22px 34px;
+        border-radius: 32px;
+        background: radial-gradient(circle at top left, rgba(35, 7, 70, 0.96), rgba(8, 3, 20, 0.98));
+        border: 1px solid rgba(255, 200, 255, 0.65);
         box-shadow:
-            0 0 25px rgba(255, 138, 216, 0.8),
-            0 0 70px rgba(94, 63, 210, 0.6);
-        backdrop-filter: blur(16px);
+            0 0 30px rgba(255, 138, 216, 0.9),
+            0 0 80px rgba(94, 63, 210, 0.75);
+        backdrop-filter: blur(18px);
         text-align: center;
-        animation: fadeIn 1.8s ease;
+        animation: fadeIn 1.4s ease;
     }
 
     @keyframes fadeIn {
@@ -177,9 +177,11 @@
         color: #ffe6ff;
         padding: 6px 12px;
         border-radius: 999px;
-        border: 1px solid rgba(255, 210, 255, 0.8);
-        background: rgba(12, 4, 30, 0.75);
-        box-shadow: 0 0 15px rgba(255, 160, 230, 0.9);
+        border: 1px solid rgba(255, 210, 255, 0.9);
+        background: radial-gradient(circle at top, rgba(40, 8, 80, 0.9), rgba(10, 2, 25, 0.96));
+        box-shadow:
+            0 0 18px rgba(255, 160, 230, 1),
+            0 0 30px rgba(136, 93, 255, 0.9);
         z-index: 4;
         cursor: default;
     }
@@ -209,9 +211,10 @@
     .greeting-line {
         font-size: 13px;
         color: #ffe9ff;
-        opacity: 0.9;
+        opacity: 0.95;
         margin-bottom: 4px;
         font-style: italic;
+        text-shadow: 0 0 8px rgba(255, 180, 255, 0.8);
     }
 
     .daily-message {
@@ -235,8 +238,9 @@
         font-size: 32px;
         line-height: 1.3;
         text-shadow:
-            0 0 12px #ff99cc,
-            0 0 25px #ff2e63;
+            0 0 16px #ff99cc,
+            0 0 32px #ff2eaa,
+            0 0 48px rgba(126, 90, 255, 0.9);
         min-height: 1.3em;
     }
 
@@ -255,7 +259,8 @@
 
     .heart-line {
         font-size: 26px;
-        margin: 10px 0 22px;
+        margin: 10px 0 18px;
+        text-shadow: 0 0 10px rgba(255, 150, 220, 0.9);
     }
 
     .text {
@@ -267,7 +272,7 @@
     .glow-word {
         position: relative;
         transition: color 0.25s ease, text-shadow 0.25s ease;
-        cursor: default;
+        cursor: pointer;
     }
 
     .glow-word:hover {
@@ -275,7 +280,7 @@
         text-shadow:
             0 0 6px #ff9ad6,
             0 0 12px #ff9ad6,
-            0 0 18px #ff9ad6;
+            0 0 20px #ff9ad6;
     }
 
     .highlight {
@@ -293,6 +298,34 @@
         text-underline-offset: 3px;
     }
 
+    .neon-block {
+        margin-top: 20px;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: radial-gradient(circle at top left, rgba(35, 10, 75, 0.96), rgba(12, 3, 30, 0.98));
+        border: 1px solid rgba(255, 210, 255, 0.6);
+        box-shadow:
+            0 0 20px rgba(255, 150, 230, 0.85),
+            0 0 40px rgba(126, 90, 255, 0.45);
+    }
+
+    .neon-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #ffeefe;
+        text-shadow:
+            0 0 10px rgba(255, 180, 255, 0.9),
+            0 0 18px rgba(126, 90, 255, 0.8);
+    }
+
+    .mini-story-text {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #fbe7ff;
+    }
+
     .quote {
         margin: 18px auto 22px;
         padding: 12px 16px;
@@ -303,7 +336,7 @@
         border-radius: 16px;
         background: radial-gradient(circle at top left, rgba(255, 158, 219, 0.4), rgba(70, 38, 115, 0.95));
         border: 1px solid rgba(255, 210, 255, 0.5);
-        box-shadow: 0 0 20px rgba(255, 158, 219, 0.6);
+        box-shadow: 0 0 22px rgba(255, 158, 219, 0.9);
         font-style: italic;
         opacity: 0;
         transition: opacity 0.8s ease;
@@ -312,6 +345,24 @@
 
     .quote.show {
         opacity: 1;
+    }
+
+    .remember-block {
+        margin-top: 16px;
+        padding: 12px 16px;
+        border-radius: 18px;
+        background: radial-gradient(circle at top, rgba(255, 150, 240, 0.35), rgba(35, 10, 70, 0.96));
+        border: 1px solid rgba(255, 215, 255, 0.7);
+        box-shadow: 0 0 24px rgba(255, 160, 240, 0.9);
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .remember-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #ffeefe;
     }
 
     .timer-block {
@@ -355,13 +406,17 @@
         cursor: pointer;
         background: linear-gradient(135deg, #ff2e63, #ff99cc);
         color: #fff;
-        box-shadow: 0 0 18px rgba(255, 102, 170, 0.9);
+        box-shadow:
+            0 0 18px rgba(255, 102, 170, 0.95),
+            0 0 32px rgba(120, 90, 255, 0.6);
         transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
 
     button:hover {
         transform: translateY(-2px) scale(1.03);
-        box-shadow: 0 0 30px rgba(255, 153, 204, 1);
+        box-shadow:
+            0 0 30px rgba(255, 153, 204, 1),
+            0 0 50px rgba(126, 90, 255, 0.9);
     }
 
     button:active {
@@ -374,7 +429,7 @@
         text-align: left;
         border-radius: 20px;
         padding: 18px 16px;
-        background: radial-gradient(circle at top left, rgba(255, 129, 197, 0.42), rgba(63, 26, 92, 0.85));
+        background: radial-gradient(circle at top left, rgba(255, 129, 197, 0.42), rgba(63, 26, 92, 0.9));
         border: 1px solid rgba(255, 198, 255, 0.6);
         box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
         font-size: 17px;
@@ -426,37 +481,6 @@
         transform: translateY(0);
     }
 
-    .moments-block,
-    .plans-block,
-    .thanks-block {
-        margin-top: 22px;
-        text-align: left;
-        padding: 14px 16px;
-        border-radius: 18px;
-        background: rgba(15, 5, 35, 0.9);
-        border: 1px solid rgba(255, 200, 255, 0.5);
-        box-shadow: 0 0 20px rgba(255, 150, 230, 0.6);
-    }
-
-    .moments-title,
-    .plans-title,
-    .thanks-title {
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: #ffeefe;
-    }
-
-    .moments-block ul,
-    .plans-block ul,
-    .thanks-block ul {
-        margin: 0;
-        padding-left: 18px;
-        font-size: 14px;
-        line-height: 1.7;
-        color: #fbe7ff;
-    }
-
     .angry-secret {
         margin-top: 8px;
         font-size: 13px;
@@ -478,9 +502,9 @@
         text-align: left;
         padding: 14px 16px;
         border-radius: 18px;
-        background: rgba(14, 4, 32, 0.9);
-        border: 1px solid rgba(255, 205, 255, 0.6);
-        box-shadow: 0 0 18px rgba(255, 160, 230, 0.5);
+        background: rgba(14, 4, 32, 0.96);
+        border: 1px solid rgba(255, 205, 255, 0.8);
+        box-shadow: 0 0 22px rgba(255, 160, 230, 0.7);
     }
 
     .mood-title {
@@ -520,33 +544,129 @@
         transform: translateY(0);
     }
 
-    .memory-block {
+    .smile-block {
+        margin-top: 20px;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(16, 5, 38, 0.96);
+        border: 1px solid rgba(255, 205, 255, 0.8);
+        box-shadow: 0 0 22px rgba(140, 180, 255, 0.7);
+    }
+
+    .smile-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #ffeefe;
+    }
+
+    .smile-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .smile-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+
+    .smile-text {
+        font-size: 13px;
+        color: #ffeefe;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(6px);
+        transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+    }
+
+    .smile-text.show {
+        opacity: 1;
+        max-height: 120px;
+        transform: translateY(0);
+    }
+
+    .moments-block,
+    .plans-block,
+    .thanks-block,
+    .memory-block,
+    .achievements-block,
+    .rules-block,
+    .dontwant-block,
+    .dreams-block,
+    .dialog-block,
+    .whyyou-block,
+    .promise-block {
         margin-top: 22px;
         text-align: left;
         padding: 14px 16px;
         border-radius: 18px;
-        background: rgba(15, 5, 35, 0.9);
-        border: 1px solid rgba(255, 200, 255, 0.5);
-        box-shadow: 0 0 20px rgba(255, 150, 230, 0.6);
+        background: rgba(15, 5, 35, 0.96);
+        border: 1px solid rgba(255, 200, 255, 0.7);
+        box-shadow: 0 0 20px rgba(255, 150, 230, 0.7);
     }
 
-    .memory-title {
+    .moments-title,
+    .plans-title,
+    .thanks-title,
+    .memory-title,
+    .achievements-title,
+    .rules-title,
+    .dontwant-title,
+    .dreams-title,
+    .dialog-title,
+    .whyyou-title,
+    .promise-title {
         font-size: 15px;
         font-weight: 600;
         margin-bottom: 6px;
         color: #ffeefe;
+        text-shadow: 0 0 10px rgba(255, 180, 255, 0.8);
     }
 
-    .memory-text {
+    .moments-block ul,
+    .plans-block ul,
+    .thanks-block ul,
+    .achievements-block ul,
+    .rules-block ul,
+    .dontwant-block ul,
+    .dreams-block ul,
+    .whyyou-block ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #fbe7ff;
+    }
+
+    .memory-text,
+    .dialog-text,
+    .promise-text {
         font-size: 14px;
         color: #fbe7ff;
         line-height: 1.7;
+    }
+
+    .dialog-line {
+        margin-bottom: 4px;
+    }
+
+    .dialog-you {
+        color: #ffd8ff;
+    }
+
+    .dialog-me {
+        color: #e0c9ff;
     }
 
     .gallery-title {
         margin-top: 26px;
         font-size: 17px;
         color: #ffdaf5;
+        text-shadow: 0 0 10px rgba(255, 170, 240, 0.9);
     }
 
     .gallery {
@@ -561,7 +681,7 @@
         height: 140px;
         object-fit: cover;
         border-radius: 18px;
-        box-shadow: 0 0 15px rgba(255, 150, 220, 0.7);
+        box-shadow: 0 0 15px rgba(255, 150, 220, 0.8);
         filter: brightness(0.96);
         transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
     }
@@ -569,7 +689,7 @@
     .gallery img:hover {
         transform: translateY(-4px) scale(1.03);
         filter: brightness(1.05);
-        box-shadow: 0 0 25px rgba(255, 195, 255, 0.9);
+        box-shadow: 0 0 25px rgba(255, 195, 255, 1);
     }
 
     .support-link {
@@ -593,6 +713,31 @@
     }
 
     .support-secret.show {
+        opacity: 1;
+        max-height: 120px;
+    }
+
+    .future-link {
+        margin-top: 4px;
+        font-size: 11px;
+        opacity: 0.75;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .future-secret {
+        margin-top: 4px;
+        font-size: 11px;
+        color: #ffeafe;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.35s ease, max-height 0.35s ease;
+        text-align: left;
+    }
+
+    .future-secret.show {
         opacity: 1;
         max-height: 120px;
     }
@@ -652,6 +797,13 @@
         opacity: 0.85;
     }
 
+    .footer-line {
+        margin-top: 10px;
+        font-size: 11px;
+        color: #f7dbff;
+        opacity: 0.8;
+    }
+
     .dias-name {
         cursor: pointer;
         text-decoration: underline;
@@ -702,7 +854,7 @@
         0% {
             transform: scale(0.9) translateY(18px);
             opacity: 0;
-            box-shadow: 0 0 0 rgba(255, 120, 200, 0.0);
+            box-shadow: 0 0 0 rgba(255, 120, 200, 0);
         }
         60% {
             transform: scale(1.02) translateY(-4px);
@@ -1086,7 +1238,7 @@
         }
         .card {
             padding: 24px 14px 26px;
-            border-radius: 22px;
+            border-radius: 24px;
         }
         h1 {
             font-size: 25px;
@@ -1145,6 +1297,16 @@
         <div id="greeting" class="greeting-line"></div>
         <div id="dailyMessage" class="daily-message"></div>
         <div class="date">11.11.2025 • наш первый год вместе</div>
+
+        <div class="neon-block mini-story reveal-on-scroll">
+            <div class="neon-title">Наша история в трех строках</div>
+            <div class="mini-story-text">
+                Был я. Была ты.<br>
+                Стали мы.<br>
+                И обратно в вариант без тебя я уже не хочу.
+            </div>
+        </div>
+
         <h1>
             <span id="typed-title" data-text="Жанека, с нашей годовщиной ❤️">
                 Жанека, с нашей годовщиной ❤️
@@ -1161,7 +1323,7 @@
             я хочу опираться и за кого хочу держаться.
         </p>
         <p class="text">
-            Как бы мы ни ругались и ни 
+            Как бы мы ни ругались и ни
             <span id="angryTrigger" class="secret-click">ссорились</span>, внутри все равно одно чувство:
             я хочу быть с тобой и сохранить нас. В наши ссоры мне тяжелее всего
             не из-за слов, а из-за мысли, что вдруг могу тебя потерять. Поэтому
@@ -1177,8 +1339,15 @@
         </p>
         <p class="text">
             Я хочу чтобы когда ты открывала этот сайт, ты чувствовала то же тепло,
-            которое я чувствую к тебе
+            которое я чувствую к тебе.
         </p>
+
+        <div class="remember-block reveal-on-scroll">
+            <div class="remember-title">Фраза, которую я хочу, чтобы ты запомнила:</div>
+            <div>
+                Если тебе когда-нибудь покажется, что ты одна - вспомни, что есть человек, который всегда за тебя. Это я.
+            </div>
+        </div>
 
         <div class="quote" id="quote-box"></div>
 
@@ -1218,7 +1387,7 @@
                 Я хочу идти к этому вместе с тобой и ради нас.
             </p>
             <p>
-                Ты правда мой самый родной человек жаным.
+                Ты правда мой самый родной человек, жаным.
                 Я с тобой и за тебя до конца, как бы ни было сложно.
             </p>
             <p>
@@ -1235,6 +1404,15 @@
                 <button type="button" class="mood-btn" id="moodSad">💭 Чуть грустно</button>
             </div>
             <div id="moodText" class="mood-text"></div>
+        </div>
+
+        <div class="smile-block reveal-on-scroll">
+            <div class="smile-title">Ты сейчас улыбаешься?</div>
+            <div class="smile-buttons">
+                <button type="button" class="smile-btn" id="smileYes">Да 😌</button>
+                <button type="button" class="smile-btn" id="smileNo">Неа</button>
+            </div>
+            <div id="smileText" class="smile-text"></div>
         </div>
 
         <div class="moments-block reveal-on-scroll">
@@ -1254,6 +1432,71 @@
                 <li>не отпускать тебя из своей жизни по глупости;</li>
                 <li>делать еще больше таких штук только для нас двоих.</li>
             </ul>
+        </div>
+
+        <div class="achievements-block reveal-on-scroll">
+            <div class="achievements-title">Наши достижения:</div>
+            <ul>
+                <li>🏅 Прожили первый год вместе.</li>
+                <li>🔥 Пережили серьезную ссору и все равно остались вместе.</li>
+                <li>🎧 Болтали по ночам, хотя надо было спать.</li>
+                <li>🏙 Вместе мечтаем про Астану.</li>
+                <li>💻 У нас есть свой сайт только для нас двоих.</li>
+            </ul>
+        </div>
+
+        <div class="rules-block reveal-on-scroll">
+            <div class="rules-title">Наши негласные правила:</div>
+            <ul>
+                <li>если что-то не так - сначала говорим, а не молчим;</li>
+                <li>стараемся не ложиться спать в ссоре;</li>
+                <li>не обесцениваем свои чувства и чувства друг друга;</li>
+                <li>помним, что мы одна команда, а не против друг друга.</li>
+            </ul>
+        </div>
+
+        <div class="dontwant-block reveal-on-scroll">
+            <div class="dontwant-title">Маленький список того, чего я не хочу:</div>
+            <ul>
+                <li>не хочу привыкнуть к тебе как к обычному человеку;</li>
+                <li>не хочу, чтобы ты думала, что ты просто девушка в моей жизни;</li>
+                <li>не хочу, чтобы мы когда-то перестали стараться друг для друга.</li>
+            </ul>
+        </div>
+
+        <div class="dreams-block reveal-on-scroll">
+            <div class="dreams-title">Наши мечты:</div>
+            <ul>
+                <li>чтобы у нас был дом, где тебе спокойно и тепло;</li>
+                <li>чтобы ты не переживала за будущее одна;</li>
+                <li>чтобы через несколько лет мы вспоминали этот сайт с улыбкой, а не с грустью.</li>
+            </ul>
+        </div>
+
+        <div class="dialog-block reveal-on-scroll">
+            <div class="dialog-title">Мини-диалог, который я представляю:</div>
+            <div class="dialog-text">
+                <div class="dialog-line dialog-you"><b>Ты:</b> "Иногда мне страшно за будущее."</div>
+                <div class="dialog-line dialog-me"><b>Я:</b> "Страшно, когда один. А мы - уже не поодиночке."</div>
+            </div>
+        </div>
+
+        <div class="whyyou-block reveal-on-scroll">
+            <div class="whyyou-title">Почему именно ты:</div>
+            <ul>
+                <li>ты настоящая, без масок;</li>
+                <li>с тобой можно и поугарать, и по-серьезному поговорить;</li>
+                <li>ты можешь бесить, но все равно остаешься самой родной;</li>
+                <li>с тобой я впервые захотел идти до конца, а не просто встречаться.</li>
+            </ul>
+        </div>
+
+        <div class="promise-block reveal-on-scroll">
+            <div class="promise-title">Если тебе когда-нибудь будет очень плохо:</div>
+            <div class="promise-text">
+                Я хочу, чтобы ты помнила одну вещь: ты не обязана держаться одна.
+                Я хочу быть тем человеком, на кого ты можешь опереться, даже если тебе кажется, что никого нет.
+            </div>
         </div>
 
         <div class="thanks-block reveal-on-scroll">
@@ -1385,8 +1628,20 @@
                 Если тебе когда-нибудь тяжело, нажми сюда тихо.
             </div>
             <div id="supportSecret" class="support-secret">
-                Если тебе сейчас тяжело, даже если ты мне об этом не пишешь, знай:  
+                Если тебе сейчас тяжело, даже если ты мне об этом не пишешь, знай:
                 я все равно за тебя, я хочу, чтобы ты не сдавалась и помнила, что мне можно написать в любое время.
+            </div>
+            <div id="futureLink" class="future-link">
+                Обращение к будущей Жанеке.
+            </div>
+            <div id="futureSecret" class="future-secret">
+                Если ты читаешь это уже через несколько лет:
+                я надеюсь, что ты все так же улыбаешься и что я все так же рядом.
+                И если вдруг нет - знай, в тот момент, пока я писал это, я был очень счастлив, что ты у меня есть.
+            </div>
+            <div class="footer-line">
+                Если мы когда-нибудь откроем этот сайт через пару лет, я хочу, чтобы ты знала:
+                я ни разу не пожалел, что тогда выбрал именно тебя.
             </div>
         </div>
     </div>
@@ -1776,7 +2031,7 @@
             "Если ты это читаешь, знай: я горжусь тобой.",
             "Напомню на всякий: ты у меня самая красивая.",
             "Если день странный, просто знай, что я за тебя.",
-            "Иногда мне просто хватает мысли о тебе, чтобы стало легче.",
+            "Иногда мне хватает одной мысли о тебе, чтобы стало легче.",
             "Этот сайт живет только потому, что ты в моей жизни."
         ];
         const today = new Date();
@@ -1805,7 +2060,7 @@
 
     if (moodTired && moodText) {
         moodTired.addEventListener("click", () => {
-            setMood("Если устала, я бы посадил тебя рядом, укрыл пледом, включил что-нибудь и просто дал тебе отдыхать. Ты заслуживаешь отдыx.");
+            setMood("Если устала, я бы посадил тебя рядом, укрыл пледом, включил что-нибудь и просто дал тебе отдыхать. Ты заслуживаешь отдых.");
             vibrate(15);
         });
     }
@@ -1813,6 +2068,31 @@
     if (moodSad && moodText) {
         moodSad.addEventListener("click", () => {
             setMood("Если тебе грустно, просто помни: есть человек, который всегда за тебя и хочет, чтобы ты не сдавалась. Да, это я.");
+            vibrate(15);
+        });
+    }
+
+    // Ты сейчас улыбаешься?
+    const smileYes = document.getElementById("smileYes");
+    const smileNo = document.getElementById("smileNo");
+    const smileText = document.getElementById("smileText");
+
+    function setSmile(text) {
+        if (!smileText) return;
+        smileText.textContent = text;
+        smileText.classList.add("show");
+    }
+
+    if (smileYes && smileText) {
+        smileYes.addEventListener("click", () => {
+            setSmile("Если ты улыбаешься, значит день уже удался. Я живу за такие моменты, честно.");
+            vibrate(15);
+        });
+    }
+
+    if (smileNo && smileText) {
+        smileNo.addEventListener("click", () => {
+            setSmile("Значит, у меня появилась задача - сделать так, чтобы ты улыбнулась. Я ее не брошу.");
             vibrate(15);
         });
     }
@@ -1840,6 +2120,17 @@
     if (supportLink && supportSecret) {
         supportLink.addEventListener("click", () => {
             supportSecret.classList.toggle("show");
+            vibrate(15);
+        });
+    }
+
+    // Обращение к будущей Жанеке
+    const futureLink = document.getElementById("futureLink");
+    const futureSecret = document.getElementById("futureSecret");
+
+    if (futureLink && futureSecret) {
+        futureLink.addEventListener("click", () => {
+            futureSecret.classList.toggle("show");
             vibrate(15);
         });
     }
