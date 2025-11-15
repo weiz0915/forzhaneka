@@ -214,6 +214,13 @@
         font-style: italic;
     }
 
+    .daily-message {
+        font-size: 13px;
+        color: #ffeefe;
+        opacity: 0.9;
+        margin-bottom: 10px;
+    }
+
     .date {
         font-size: 12px;
         letter-spacing: 2px;
@@ -420,7 +427,8 @@
     }
 
     .moments-block,
-    .plans-block {
+    .plans-block,
+    .thanks-block {
         margin-top: 22px;
         text-align: left;
         padding: 14px 16px;
@@ -431,7 +439,8 @@
     }
 
     .moments-title,
-    .plans-title {
+    .plans-title,
+    .thanks-title {
         font-size: 15px;
         font-weight: 600;
         margin-bottom: 6px;
@@ -439,7 +448,8 @@
     }
 
     .moments-block ul,
-    .plans-block ul {
+    .plans-block ul,
+    .thanks-block ul {
         margin: 0;
         padding-left: 18px;
         font-size: 14px;
@@ -461,6 +471,76 @@
     .angry-secret.show {
         opacity: 1;
         max-height: 80px;
+    }
+
+    .mood-block {
+        margin-top: 20px;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(14, 4, 32, 0.9);
+        border: 1px solid rgba(255, 205, 255, 0.6);
+        box-shadow: 0 0 18px rgba(255, 160, 230, 0.5);
+    }
+
+    .mood-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #ffeefe;
+    }
+
+    .mood-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 8px;
+        justify-content: center;
+    }
+
+    .mood-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+        box-shadow: 0 0 12px rgba(255, 140, 220, 0.7);
+    }
+
+    .mood-text {
+        font-size: 13px;
+        color: #ffeefe;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transform: translateY(6px);
+        transition: opacity 0.3s ease, max-height 0.3s ease, transform 0.3s ease;
+    }
+
+    .mood-text.show {
+        opacity: 1;
+        max-height: 120px;
+        transform: translateY(0);
+    }
+
+    .memory-block {
+        margin-top: 22px;
+        text-align: left;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(15, 5, 35, 0.9);
+        border: 1px solid rgba(255, 200, 255, 0.5);
+        box-shadow: 0 0 20px rgba(255, 150, 230, 0.6);
+    }
+
+    .memory-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #ffeefe;
+    }
+
+    .memory-text {
+        font-size: 14px;
+        color: #fbe7ff;
+        line-height: 1.7;
     }
 
     .gallery-title {
@@ -490,6 +570,31 @@
         transform: translateY(-4px) scale(1.03);
         filter: brightness(1.05);
         box-shadow: 0 0 25px rgba(255, 195, 255, 0.9);
+    }
+
+    .support-link {
+        margin-top: 10px;
+        font-size: 11px;
+        opacity: 0.8;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .support-secret {
+        margin-top: 6px;
+        font-size: 13px;
+        color: #ffeafe;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.35s ease, max-height 0.35s ease;
+        text-align: left;
+    }
+
+    .support-secret.show {
+        opacity: 1;
+        max-height: 120px;
     }
 
     .heart {
@@ -1038,6 +1143,7 @@
 <div class="wrapper">
     <div class="card">
         <div id="greeting" class="greeting-line"></div>
+        <div id="dailyMessage" class="daily-message"></div>
         <div class="date">11.11.2025 • наш первый год вместе</div>
         <h1>
             <span id="typed-title" data-text="Жанека, с нашей годовщиной ❤️">
@@ -1066,7 +1172,7 @@
         </div>
 
         <p class="text highlight">
-            <span class="glow-word">Жаным</span>, я очень сильно люблю тебя
+            <span class="glow-word" id="zhanymWord">Жаным</span>, я очень сильно люблю тебя
             и верю, что мы дойдем до конца, до кольца ❤️
         </p>
         <p class="text">
@@ -1121,6 +1227,16 @@
             </p>
         </div>
 
+        <div class="mood-block reveal-on-scroll">
+            <div class="mood-title">Как ты сейчас, Жанека?</div>
+            <div class="mood-buttons">
+                <button type="button" class="mood-btn" id="moodHappy">😊 Мне норм</button>
+                <button type="button" class="mood-btn" id="moodTired">🥱 Немного устала</button>
+                <button type="button" class="mood-btn" id="moodSad">💭 Чуть грустно</button>
+            </div>
+            <div id="moodText" class="mood-text"></div>
+        </div>
+
         <div class="moments-block reveal-on-scroll">
             <div class="moments-title">Три момента, которые я особенно помню:</div>
             <ul>
@@ -1138,6 +1254,21 @@
                 <li>не отпускать тебя из своей жизни по глупости;</li>
                 <li>делать еще больше таких штук только для нас двоих.</li>
             </ul>
+        </div>
+
+        <div class="thanks-block reveal-on-scroll">
+            <div class="thanks-title">За что я особенно благодарен тебе:</div>
+            <ul>
+                <li>за то, что не сдаешь нас, даже когда я туплю;</li>
+                <li>за твой смех, голосовые и реакции, которые делают день легче;</li>
+                <li>за то, что с тобой этот год не пустой, а настоящий;</li>
+                <li>за то, что ты просто есть в моей жизни.</li>
+            </ul>
+        </div>
+
+        <div class="memory-block reveal-on-scroll">
+            <div class="memory-title">Сегодняшнее маленькое воспоминание:</div>
+            <div id="memoryText" class="memory-text"></div>
         </div>
 
         <!-- ПРИГЛАСИТЕЛЬНАЯ НА СВИДАНИЕ -->
@@ -1249,6 +1380,13 @@
             </div>
             <div id="diasSecret" class="dias-secret">
                 Я всегда буду на твоей стороне, даже если весь мир будет против. Просто знай это.
+            </div>
+            <div id="supportLink" class="support-link">
+                Если тебе когда-нибудь тяжело, нажми сюда тихо.
+            </div>
+            <div id="supportSecret" class="support-secret">
+                Если тебе сейчас тяжело, даже если ты мне об этом не пишешь, знай:  
+                я все равно за тебя, я хочу, чтобы ты не сдавалась и помнила, что мне можно написать в любое время.
             </div>
         </div>
     </div>
@@ -1630,7 +1768,95 @@
         greetingEl.textContent = text;
     }
 
-    // Reveal on scroll (для мобилки и не только)
+    // Сообщение дня от Диаса
+    const dailyEl = document.getElementById("dailyMessage");
+    if (dailyEl) {
+        const dailyMessages = [
+            "Сегодняшний день официально объявляю днем Жанеки.",
+            "Если ты это читаешь, знай: я горжусь тобой.",
+            "Напомню на всякий: ты у меня самая красивая.",
+            "Если день странный, просто знай, что я за тебя.",
+            "Иногда мне просто хватает мысли о тебе, чтобы стало легче.",
+            "Этот сайт живет только потому, что ты в моей жизни."
+        ];
+        const today = new Date();
+        const index = today.getDate() % dailyMessages.length;
+        dailyEl.textContent = dailyMessages[index];
+    }
+
+    // Настроение Жанеки
+    const moodHappy = document.getElementById("moodHappy");
+    const moodTired = document.getElementById("moodTired");
+    const moodSad = document.getElementById("moodSad");
+    const moodText = document.getElementById("moodText");
+
+    function setMood(text) {
+        if (!moodText) return;
+        moodText.textContent = text;
+        moodText.classList.add("show");
+    }
+
+    if (moodHappy && moodText) {
+        moodHappy.addEventListener("click", () => {
+            setMood("Если тебе норм, то мне уже хорошо. Просто знай, что даже в обычный день ты делаешь мою жизнь лучше.");
+            vibrate(15);
+        });
+    }
+
+    if (moodTired && moodText) {
+        moodTired.addEventListener("click", () => {
+            setMood("Если устала, я бы посадил тебя рядом, укрыл пледом, включил что-нибудь и просто дал тебе отдыхать. Ты заслуживаешь отдыx.");
+            vibrate(15);
+        });
+    }
+
+    if (moodSad && moodText) {
+        moodSad.addEventListener("click", () => {
+            setMood("Если тебе грустно, просто помни: есть человек, который всегда за тебя и хочет, чтобы ты не сдавалась. Да, это я.");
+            vibrate(15);
+        });
+    }
+
+    // Память дня
+    const memoryText = document.getElementById("memoryText");
+    if (memoryText) {
+        const memories = [
+            "Тот момент, когда мы первый раз серьезно поговорили и после этого стали ближе, чем раньше.",
+            "Один из вечеров, когда мы просто переписывались, но мне казалось, что весь мир сузился до нашего чата.",
+            "Тот день, когда ты смеялась, а я просто смотрел и думал, как мне повезло.",
+            "Вспоминаю, как мы обсуждали Астану и будущее, и мне стало спокойнее, потому что это будущее с тобой.",
+            "Один из наших конфликтов, после которого я еще сильнее понял, что не хочу тебя терять.",
+            "Любой момент, когда ты просто писала мне, а я сразу чувствовал, что не один."
+        ];
+        const d = new Date();
+        const idx = (d.getDate() + d.getMonth()) % memories.length;
+        memoryText.textContent = memories[idx];
+    }
+
+    // Секрет поддержки
+    const supportLink = document.getElementById("supportLink");
+    const supportSecret = document.getElementById("supportSecret");
+
+    if (supportLink && supportSecret) {
+        supportLink.addEventListener("click", () => {
+            supportSecret.classList.toggle("show");
+            vibrate(15);
+        });
+    }
+
+    // Пасхалка на слово "Жаным"
+    const zhanymWord = document.getElementById("zhanymWord");
+    if (zhanymWord && secretEl) {
+        zhanymWord.addEventListener("click", () => {
+            secretEl.textContent = "Это слово навсегда про тебя, даже если я иногда туплю.";
+            secretEl.classList.add("show");
+            setTimeout(() => {
+                secretEl.classList.remove("show");
+            }, 2200);
+        });
+    }
+
+    // Reveal on scroll
     const revealEls = document.querySelectorAll(".reveal-on-scroll");
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
