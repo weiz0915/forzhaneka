@@ -638,58 +638,108 @@
         transform: translateY(0);
     }
 
-    /* общие блоки */
-    .moments-block,
-    .plans-block,
-    .thanks-block,
-    .memory-block,
-    .achievements-block,
-    .rules-block,
-    .dontwant-block,
-    .dreams-block,
-    .dialog-block,
-    .whyyou-block,
-    .promise-block,
-    .faq-block,
-    .overthink-block,
-    .bad-day-block,
-    .progress-block,
-    .vs-world-block,
-    .question-block,
-    .log-block,
-    .future-map-block,
-    .fight-block,
-    .three-things-block {
+    /* ОБЩИЕ "ОКОШКИ" */
+    .window-block {
         margin-top: 22px;
-        text-align: left;
-        padding: 14px 16px;
         border-radius: 18px;
         background: rgba(15, 5, 35, 0.96);
         border: 1px solid rgba(255, 200, 255, 0.7);
         box-shadow: 0 0 20px rgba(255, 150, 230, 0.7);
+        text-align: left;
+        overflow: hidden;
     }
 
-    .moments-title,
-    .plans-title,
-    .thanks-title,
-    .memory-title,
-    .achievements-title,
-    .rules-title,
-    .dontwant-title,
-    .dreams-title,
-    .dialog-title,
-    .whyyou-title,
-    .promise-title,
-    .faq-title,
-    .overthink-title,
+    .window-header {
+        width: 100%;
+        padding: 10px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: radial-gradient(circle at top left, rgba(60, 20, 106, 0.98), rgba(20, 5, 45, 0.95));
+        border: none;
+        color: #ffeefe;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .window-title {
+        text-shadow: 0 0 10px rgba(255, 180, 255, 0.8);
+    }
+
+    .window-arrow {
+        font-size: 16px;
+        transition: transform 0.25s ease;
+    }
+
+    .window-block.open .window-arrow {
+        transform: rotate(180deg);
+    }
+
+    .window-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0 14px;
+        transform: translateY(6px);
+        transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .window-block.open .window-content {
+        max-height: 800px;
+        opacity: 1;
+        padding-bottom: 12px;
+        transform: translateY(0);
+    }
+
+    .window-content ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #fbe7ff;
+    }
+
+    .window-content p {
+        font-size: 14px;
+        color: #fbe7ff;
+        line-height: 1.7;
+        margin: 8px 0;
+    }
+
+    .bad-day-block,
+    .overthink-block,
+    .question-block,
+    .memory-block,
+    .thanks-block,
+    .vs-world-block,
+    .three-things-block,
+    .fight-block,
+    .log-block,
+    .future-map-block,
+    .progress-block,
+    .faq-block,
+    .proud-block,
+    .heartgame-block,
+    .lifechange-block,
+    .nolove-block,
+    .manifest-block {
+        /* визуально используют window-block, но через классы выше */
+    }
+
     .bad-day-title,
-    .progress-title,
-    .vs-world-title,
+    .overthink-title,
     .question-title,
+    .memory-title,
+    .thanks-title,
+    .vs-world-title,
+    .three-things-title,
+    .fight-title,
     .log-title,
     .future-map-title,
-    .fight-title,
-    .three-things-title {
+    .progress-title,
+    .faq-title {
         font-size: 15px;
         font-weight: 600;
         margin-bottom: 6px;
@@ -697,48 +747,20 @@
         text-shadow: 0 0 10px rgba(255, 180, 255, 0.8);
     }
 
-    .moments-block ul,
-    .plans-block ul,
-    .thanks-block ul,
-    .achievements-block ul,
-    .rules-block ul,
-    .dontwant-block ul,
-    .dreams-block ul,
-    .whyyou-block ul,
-    .progress-block ul,
-    .future-map-block ul {
-        margin: 0;
-        padding-left: 18px;
-        font-size: 14px;
-        line-height: 1.7;
-        color: #fbe7ff;
-    }
-
-    .memory-text,
-    .dialog-text,
-    .promise-text,
-    .overthink-text,
     .bad-day-text,
-    .vs-world-text,
+    .overthink-text,
     .question-text,
-    .log-text,
+    .memory-text,
+    .thanks-text,
+    .vs-world-text,
+    .three-things-text,
     .fight-text,
-    .three-things-text {
+    .log-text,
+    .future-map-text,
+    .progress-text {
         font-size: 14px;
         color: #fbe7ff;
         line-height: 1.7;
-    }
-
-    .dialog-line {
-        margin-bottom: 4px;
-    }
-
-    .dialog-you {
-        color: #ffd8ff;
-    }
-
-    .dialog-me {
-        color: #e0c9ff;
     }
 
     .gallery-title {
@@ -746,6 +768,7 @@
         font-size: 17px;
         color: #ffdaf5;
         text-shadow: 0 0 10px rgba(255, 170, 240, 0.9);
+        text-align: left;
     }
 
     .gallery {
@@ -1284,11 +1307,19 @@
 
     .intro-inner {
         text-align: center;
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: rgba(10, 2, 25, 0.9);
+        border: 1px solid rgba(255, 210, 255, 0.9);
+        box-shadow:
+            0 0 24px rgba(255, 150, 230, 0.9),
+            0 0 40px rgba(120, 90, 255, 0.7);
     }
 
     .intro-text {
-        font-size: 17px;
+        font-size: 16px;
         margin-bottom: 10px;
+        color: #ffeefe;
     }
 
     .intro-dots span {
@@ -1329,6 +1360,60 @@
 
     .reveal-on-scroll.visible {
         opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Игра с сердечками */
+    .heartgame-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+        margin-bottom: 6px;
+    }
+
+    .heartgame-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: radial-gradient(circle at top, #ff80c0, #ff2e63);
+        box-shadow: 0 0 15px rgba(255, 120, 210, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .heartgame-text {
+        font-size: 13px;
+        color: #ffeefe;
+        min-height: 1.6em;
+    }
+
+    /* Редкий секретный текст */
+    .rare-hint {
+        position: fixed;
+        right: 10px;
+        bottom: 8px;
+        font-size: 11px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(15, 5, 35, 0.9);
+        border: 1px solid rgba(255, 210, 255, 0.7);
+        color: #ffeefe;
+        box-shadow: 0 0 16px rgba(255, 150, 230, 0.8);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transform: translateY(6px);
+        z-index: 50;
+    }
+
+    .rare-hint.show {
+        opacity: 1;
+        pointer-events: auto;
         transform: translateY(0);
     }
 
@@ -1374,7 +1459,7 @@
 
 <div class="intro-overlay" id="introOverlay">
     <div class="intro-inner">
-        <div class="intro-text">Подожди, Жанека...<br>загружаю наш год ❤️</div>
+        <div class="intro-text" id="introText"></div>
         <div class="intro-dots"><span></span><span></span><span></span></div>
     </div>
 </div>
@@ -1392,6 +1477,7 @@
 <div class="bg-photo four"></div>
 
 <div id="secret" class="secret-msg"></div>
+<div id="rareHint" class="rare-hint"></div>
 
 <div class="wrapper">
     <div class="card">
@@ -1446,7 +1532,7 @@
         <div class="remember-block reveal-on-scroll">
             <div class="remember-title">Фраза, которую я хочу, чтобы ты запомнила:</div>
             <div>
-                Если тебе когда-нибудь покажется, что ты одна - вспомни, что есть человек, который всегда за тебя. Это я.
+                Если тебе когда-нибудь покажется, что ты одна, вспомни, что есть человек, который всегда за тебя. Это я.
             </div>
         </div>
 
@@ -1486,7 +1572,7 @@
             </p>
             <p>
                 Я хочу учиться решать все спокойнее, без крика и обид, с уважением друг к другу.
-                Наши отношения для меня самые лучшие именно потомучто они настоящие и в них
+                Наши отношения для меня самые лучшие именно потому что они настоящие и в них
                 есть мы, со всем нашим смехом, ревностью, обидами и теплом.
             </p>
             <p>
@@ -1525,202 +1611,420 @@
             <div id="smileText" class="smile-text"></div>
         </div>
 
-        <div class="bad-day-block reveal-on-scroll">
-            <div class="bad-day-title">Если у тебя плохой день:</div>
-            <div class="bad-day-text">
-                Ты имеешь право устать, имеешь право ничего не хотеть и просто зависнуть.
-                Но даже в такие дни ты все равно остаешься для меня той самой Жанекой, которой я горжусь.
-                И даже если я не рядом физически, я все равно за тебя.
+        <!-- ПЛОХОЙ ДЕНЬ -->
+        <div class="window-block bad-day-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если у тебя плохой день</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="bad-day-text">
+                    Ты имеешь право устать, иметь нулевое настроение и просто ничего не хотеть.
+                    Но даже в такие дни ты все равно остаешься для меня той самой Жанекой, которой я горжусь.
+                    И даже если я не рядом физически, я все равно за тебя.
+                </p>
             </div>
         </div>
 
-        <div class="overthink-block reveal-on-scroll">
-            <div class="overthink-title">Если ты сейчас все накручиваешь:</div>
-            <div class="overthink-text">
-                Не все мысли, которые приходят в голову, правда.  
-                Я не против тебя, я за тебя.  
-                Если что-то кажется странным или непонятным - мы можем поговорить, а не просто молчать.  
-                Сен мен үшін маңыздысың, даже когда сама так не думаешь.
+        <!-- ЕСЛИ НАКРУЧИВАЕШЬ -->
+        <div class="window-block overthink-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если ты сейчас все накручиваешь</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="overthink-text">
+                    Не все мысли, которые приходят в голову, правда.  
+                    Я не против тебя, я за тебя.  
+                    Если что-то кажется странным или непонятным, мы можем поговорить, а не просто молчать.  
+                    Сен мен үшін маңыздысың, даже когда сама так не думаешь.
+                </p>
             </div>
         </div>
 
-        <div class="moments-block reveal-on-scroll">
-            <div class="moments-title">Три момента, которые я особенно помню:</div>
-            <ul>
-                <li>Тот день, когда мы серьезно поссорились, но все равно выбрали остаться вместе.</li>
-                <li>Момент, когда я понял, что хочу не просто встречаться, а идти с тобой до конца.</li>
-                <li>Тот раз, когда я смотрел на тебя и подумал: "вот с этим человеком я хочу жить".</li>
-            </ul>
-        </div>
-
-        <div class="plans-block reveal-on-scroll">
-            <div class="plans-title">Мои планы на нас:</div>
-            <ul>
-                <li>дойти с тобой до гранта и переезда в Астану;</li>
-                <li>сделать так, чтобы у тебя было больше улыбок, чем слез;</li>
-                <li>не отпускать тебя из своей жизни по глупости;</li>
-                <li>делать еще больше таких штук только для нас двоих.</li>
-            </ul>
-        </div>
-
-        <div class="achievements-block reveal-on-scroll">
-            <div class="achievements-title">Наши достижения:</div>
-            <ul>
-                <li>🏅 Прожили первый год вместе.</li>
-                <li>🔥 Пережили серьезную ссору и все равно остались вместе.</li>
-                <li>🎧 Болтали по ночам, хотя надо было спать.</li>
-                <li>🏙 Вместе мечтаем про Астану.</li>
-                <li>💻 У нас есть свой сайт только для нас двоих.</li>
-            </ul>
-        </div>
-
-        <div class="rules-block reveal-on-scroll">
-            <div class="rules-title">Наши негласные правила:</div>
-            <ul>
-                <li>если что-то не так - сначала говорим, а не молчим;</li>
-                <li>стараемся не ложиться спать в ссоре;</li>
-                <li>не обесцениваем свои чувства и чувства друг друга;</li>
-                <li>помним, что мы одна команда, а не против друг друга.</li>
-            </ul>
-        </div>
-
-        <div class="dontwant-block reveal-on-scroll">
-            <div class="dontwant-title">Маленький список того, чего я не хочу:</div>
-            <ul>
-                <li>не хочу привыкнуть к тебе как к обычному человеку;</li>
-                <li>не хочу, чтобы ты думала, что ты просто девушка в моей жизни;</li>
-                <li>не хочу, чтобы мы когда-то перестали стараться друг для друга.</li>
-            </ul>
-        </div>
-
-        <div class="dreams-block reveal-on-scroll">
-            <div class="dreams-title">Наши мечты:</div>
-            <ul>
-                <li>чтобы у нас был дом, где тебе спокойно и тепло;</li>
-                <li>чтобы ты не переживала за будущее одна;</li>
-                <li>чтобы через несколько лет мы вспоминали этот сайт с улыбкой, а не с грустью.</li>
-            </ul>
-        </div>
-
-        <div class="dialog-block reveal-on-scroll">
-            <div class="dialog-title">Мини-диалог, который я представляю:</div>
-            <div class="dialog-text">
-                <div class="dialog-line dialog-you"><b>Ты:</b> "Иногда мне страшно за будущее."</div>
-                <div class="dialog-line dialog-me"><b>Я:</b> "Страшно, когда один. А мы - уже не поодиночке."</div>
+        <!-- ТРИ МОМЕНТА -->
+        <div class="window-block moments-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Три момента, которые я особенно помню</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>Тот день, когда мы серьезно поссорились, но все равно выбрали остаться вместе.</li>
+                    <li>Момент, когда я понял, что хочу не просто встречаться, а идти с тобой до конца.</li>
+                    <li>Тот раз, когда я смотрел на тебя и думал: "вот с этим человеком я хочу жить".</li>
+                </ul>
             </div>
         </div>
 
-        <div class="whyyou-block reveal-on-scroll">
-            <div class="whyyou-title">Почему именно ты:</div>
-            <ul>
-                <li>ты настоящая, без масок;</li>
-                <li>с тобой можно и поугарать, и по-серьезному поговорить;</li>
-                <li>ты можешь бесить, но все равно остаешься самой родной;</li>
-                <li>с тобой я впервые захотел идти до конца, а не просто встречаться.</li>
-            </ul>
-        </div>
-
-        <div class="promise-block reveal-on-scroll">
-            <div class="promise-title">Если тебе когда-нибудь будет очень плохо:</div>
-            <div class="promise-text">
-                Я хочу, чтобы ты помнила одну вещь: ты не обязана держаться одна.
-                Я хочу быть тем человеком, на кого ты можешь опереться, даже если тебе кажется, что никого нет.
+        <!-- ПЛАНЫ НА НАС -->
+        <div class="window-block plans-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Мои планы на нас</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>дойти с тобой до гранта и переезда в Астану;</li>
+                    <li>сделать так, чтобы у тебя было больше улыбок, чем слез;</li>
+                    <li>не отпускать тебя из своей жизни по глупости;</li>
+                    <li>делать еще больше таких штук только для нас двоих.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="faq-block reveal-on-scroll">
-            <div class="faq-title">FAQ про нас:</div>
-            <div class="log-text">
-                <b>Вопрос:</b> "Ты меня не разлюбишь?"<br>
-                <b>Ответ:</b> Нет. Могу тупить, могу уставать, но не разлюбить.<br><br>
-                <b>Вопрос:</b> "Я тебе не надоела?"<br>
-                <b>Ответ:</b> Я вообще не понимаю, как ты можешь мне надоесть.<br><br>
-                <b>Вопрос:</b> "Почему именно я?"<br>
-                <b>Ответ:</b> Потому что с тобой я чувствую себя дома, а не как гость.
+        <!-- НАШИ ДОСТИЖЕНИЯ -->
+        <div class="window-block achievements-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Наши достижения</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>🏅 Прожили первый год вместе.</li>
+                    <li>🔥 Пережили серьезную ссору и все равно остались вместе.</li>
+                    <li>🎧 Болтали по ночам, хотя надо было спать.</li>
+                    <li>🏙 Вместе мечтаем про Астану.</li>
+                    <li>💻 У нас есть свой сайт только для нас двоих.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="vs-world-block reveal-on-scroll">
-            <div class="vs-world-title">Мы против мира:</div>
-            <div class="vs-world-text">
-                Не всегда просто. Иногда по-детски, иногда по-взрослому.  
-                Но я правда хочу, чтобы это было "мы", а не "ты отдельно и я отдельно".
+        <!-- ПРАВИЛА -->
+        <div class="window-block rules-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Наши негласные правила</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>если что-то не так, сначала говорим, а не молчим;</li>
+                    <li>стараемся не ложиться спать в ссоре;</li>
+                    <li>не обесцениваем свои чувства и чувства друг друга;</li>
+                    <li>помним, что мы одна команда, а не против друг друга.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="question-block reveal-on-scroll">
-            <div class="question-title">Вопрос дня для тебя:</div>
-            <div id="questionText" class="question-text"></div>
-        </div>
-
-        <div class="log-block reveal-on-scroll">
-            <div class="log-title">Журнал наших событий:</div>
-            <div class="log-text" style="font-family: 'Courier New', monospace;">
-                [11.11.2024] Обнаружен особенный человек: Жанека<br>
-                [2025...] Системе сложно без нее<br>
-                [status] connection: stable, feelings: growing<br>
-                [warning] зависимость от ее улыбки увеличивается<br>
-                [note] пользователь "Dias" не хочет возвращаться в режим без нее
+        <!-- ЧЕГО Я НЕ ХОЧУ -->
+        <div class="window-block dontwant-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Маленький список того, чего я не хочу</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>не хочу привыкнуть к тебе как к обычному человеку;</li>
+                    <li>не хочу, чтобы ты думала, что ты просто девушка в моей жизни;</li>
+                    <li>не хочу, чтобы мы когда-то перестали стараться друг для друга.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="future-map-block reveal-on-scroll">
-            <div class="future-map-title">Небольшая карта будущего, которое я хочу с тобой:</div>
-            <ul>
-                <li>вытащить ЕНТ и поступить на то, о чем мечтаем;</li>
-                <li>переезд в Астану и наш первый настоящий быт;</li>
-                <li>маленькое жилье, где ты смеешься, а я слушаю;</li>
-                <li>наши бытовые приколы, которые поймем только мы;</li>
-                <li>через пару лет открыть этот сайт и улыбаться, вспоминая, с чего все начиналось.</li>
-            </ul>
-        </div>
-
-        <div class="progress-block reveal-on-scroll">
-            <div class="progress-title">Мой прогресс как парня (над чем я хочу работать):</div>
-            <ul>
-                <li>меньше срываться на эмоциях;</li>
-                <li>учиться спокойно обсуждать, а не просто замолкать;</li>
-                <li>чаще говорить тебе хорошее, а не только думать;</li>
-                <li>не забывать, что у тебя тоже есть свои чувства, не только мои.</li>
-            </ul>
-        </div>
-
-        <div class="fight-block reveal-on-scroll">
-            <div class="fight-title">Если мы в ссоре и ты все равно сюда зашла:</div>
-            <div class="fight-text">
-                Если мы вдруг в ссоре и ты все равно открыла этот сайт, значит тебе не все равно.  
-                Мне тоже.  
-                Я могу быть тупым и упрямым, но я не хочу, чтобы из-за этого мы потеряли друг друга.
+        <!-- МЕЧТЫ -->
+        <div class="window-block dreams-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Наши мечты</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>чтобы у нас был дом, где тебе спокойно и тепло;</li>
+                    <li>чтобы ты не переживала за будущее одна;</li>
+                    <li>чтобы через несколько лет мы вспоминали этот сайт с улыбкой, а не с грустью.</li>
+                </ul>
             </div>
         </div>
 
-        <div class="three-things-block reveal-on-scroll">
-            <div class="three-things-title">Три вещи, которые я хочу, чтобы ты о себе знала:</div>
-            <div class="three-things-text">
-                1. Ты не "слишком чувствительная", ты просто живая. <br>
-                2. Ты не "надоедаешь", ты важна. <br>
-                3. Ты не "проблема", ты человек, которого я люблю.
+        <!-- МИНИ-ДИАЛОГ -->
+        <div class="window-block dialog-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Мини-диалог, который я представляю</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="dialog-text">
+                    <b class="dialog-you">Ты:</b> "Иногда мне страшно за будущее."<br>
+                    <b class="dialog-me">Я:</b> "Страшно, когда один. А мы уже не поодиночке."
+                </p>
             </div>
         </div>
 
-        <div class="thanks-block reveal-on-scroll">
-            <div class="thanks-title">За что я особенно благодарен тебе:</div>
-            <ul>
-                <li>за то, что не сдаешь нас, даже когда я туплю;</li>
-                <li>за твой смех, голосовые и реакции, которые делают день легче;</li>
-                <li>за то, что с тобой этот год не пустой, а настоящий;</li>
-                <li>за то, что ты просто есть в моей жизни.</li>
-            </ul>
+        <!-- ПОЧЕМУ ИМЕННО ТЫ -->
+        <div class="window-block whyyou-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Почему именно ты</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>ты настоящая, без масок;</li>
+                    <li>с тобой можно и поугарать, и по-серьезному поговорить;</li>
+                    <li>ты можешь бесить, но все равно остаешься самой родной;</li>
+                    <li>с тобой я впервые захотел идти до конца, а не просто встречаться.</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="memory-block reveal-on-scroll">
-            <div class="memory-title">Сегодняшнее маленькое воспоминание:</div>
-            <div id="memoryText" class="memory-text"></div>
+        <!-- ЕСЛИ ТЕБЕ ОЧЕНЬ ПЛОХО -->
+        <div class="window-block promise-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если тебе когда-нибудь будет очень плохо</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="promise-text">
+                    Я хочу, чтобы ты помнила одну вещь: ты не обязана держаться одна.
+                    Я хочу быть тем человеком, на кого ты можешь опереться, даже если тебе кажется, что никого нет.
+                </p>
+            </div>
         </div>
 
-        <div class="bad-day-block reveal-on-scroll">
-            <div class="bad-day-title">Если ты читаешь это перед сном:</div>
-            <div id="beforeSleepText" class="bad-day-text">
+        <!-- FAQ -->
+        <div class="window-block faq-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">FAQ про нас</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="log-text">
+                    <b>Вопрос:</b> "Ты меня не разлюбишь?"<br>
+                    <b>Ответ:</b> Нет. Могу тупить, могу уставать, но не разлюбить.<br><br>
+                    <b>Вопрос:</b> "Я тебе не надоела?"<br>
+                    <b>Ответ:</b> Я вообще не понимаю, как ты можешь мне надоесть.<br><br>
+                    <b>Вопрос:</b> "Почему именно я?"<br>
+                    <b>Ответ:</b> Потому что с тобой я чувствую себя дома, а не как гость.
+                </p>
+            </div>
+        </div>
+
+        <!-- МЫ ПРОТИВ МИРА (манифест частично тут) -->
+        <div class="window-block vs-world-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Мы против мира</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="vs-world-text">
+                    Не всегда просто. Иногда по-детски, иногда по-взрослому.  
+                    Но я правда хочу, чтобы это было "мы", а не "ты отдельно и я отдельно".
+                </p>
+            </div>
+        </div>
+
+        <!-- ВОПРОС ДНЯ -->
+        <div class="window-block question-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Вопрос дня для тебя</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p id="questionText" class="question-text"></p>
+            </div>
+        </div>
+
+        <!-- ЖУРНАЛ СОБЫТИЙ -->
+        <div class="window-block log-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Журнал наших событий</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="log-text" style="font-family: 'Courier New', monospace;">
+                    [11.11.2024] Обнаружен особенный человек: Жанека<br>
+                    [2025...] Системе сложно без нее<br>
+                    [status] connection: stable, feelings: growing<br>
+                    [warning] зависимость от ее улыбки увеличивается<br>
+                    [note] пользователь "Dias" не хочет возвращаться в режим без нее
+                </p>
+            </div>
+        </div>
+
+        <!-- КАРТА БУДУЩЕГО -->
+        <div class="window-block future-map-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Небольшая карта будущего, которое я хочу с тобой</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>вытащить ЕНТ и поступить на то, о чем мечтаем;</li>
+                    <li>переезд в Астану и наш первый настоящий быт;</li>
+                    <li>маленькое жилье, где ты смеешься, а я слушаю;</li>
+                    <li>наши бытовые приколы, которые поймем только мы;</li>
+                    <li>через пару лет открыть этот сайт и улыбаться, вспоминая, с чего все начиналось.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- МОЙ ПРОГРЕСС КАК ПАРНЯ -->
+        <div class="window-block progress-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Мой прогресс как парня</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>меньше срываться на эмоциях;</li>
+                    <li>учиться спокойно обсуждать, а не просто замолкать;</li>
+                    <li>чаще говорить тебе хорошее, а не только думать;</li>
+                    <li>не забывать, что у тебя тоже есть свои чувства, не только мои.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ЕСЛИ МЫ В ССОРЕ -->
+        <div class="window-block fight-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если мы в ссоре и ты все равно сюда зашла</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="fight-text">
+                    Если мы вдруг в ссоре и ты все равно открыла этот сайт, значит тебе не все равно.  
+                    Мне тоже.  
+                    Я могу быть тупым и упрямым, но я не хочу, чтобы из-за этого мы потеряли друг друга.
+                </p>
+            </div>
+        </div>
+
+        <!-- ТРИ ВЕЩИ, КОТОРЫЕ Я ХОЧУ, ЧТОБЫ ТЫ ЗНАЛА -->
+        <div class="window-block three-things-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Три вещи, которые я хочу, чтобы ты о себе знала</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="three-things-text">
+                    1. Ты не "слишком чувствительная", ты просто живая. <br>
+                    2. Ты не "надоедаешь", ты важна. <br>
+                    3. Ты не "проблема", ты человек, которого я люблю.
+                </p>
+            </div>
+        </div>
+
+        <!-- ЧЕМ Я ГОРЖУСЬ В ТЕБЕ (идея 8) -->
+        <div class="window-block proud-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Чем я горжусь в тебе</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>тем, как ты держишься, даже когда тебе очень тяжело;</li>
+                    <li>тем, что не сдаешься на учебе и продолжаешь идти вперед;</li>
+                    <li>тем, как ты умеешь любить людей вокруг и переживать за них;</li>
+                    <li>тем, как ты растешь, даже если сама этого не замечаешь;</li>
+                    <li>тем, что ты не опускаешь руки, даже когда устаешь от всего.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ИГРА С СЕРДЕЧКАМИ (идея 9) -->
+        <div class="window-block heartgame-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Мини-игра: нажми на сердечко</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="three-things-text">
+                    Каждое сердечко хранит одну маленькую фразу для тебя. Можешь нажать на несколько подряд.
+                </p>
+                <div class="heartgame-row">
+                    <button type="button" class="heartgame-btn">💖</button>
+                    <button type="button" class="heartgame-btn">💖</button>
+                    <button type="button" class="heartgame-btn">💖</button>
+                    <button type="button" class="heartgame-btn">💖</button>
+                    <button type="button" class="heartgame-btn">💖</button>
+                    <button type="button" class="heartgame-btn">💖</button>
+                </div>
+                <div id="heartGameText" class="heartgame-text"></div>
+            </div>
+        </div>
+
+        <!-- КАК ТЫ ПОМЕНЯЛА МОЮ ЖИЗНЬ (идея 10) -->
+        <div class="window-block lifechange-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Как ты поменяла мою жизнь</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="lifechange-text">
+                    После того, как ты появилась:
+                </p>
+                <ul>
+                    <li>я стал больше думать про будущее, а не только про сегодня;</li>
+                    <li>я стал больше ценить моменты, а не только результаты;</li>
+                    <li>я понял, что отношения это не только красиво, но и работа, и я готов стараться;</li>
+                    <li>у меня появилась мысль: "я не хочу другого человека рядом, я хочу тебя".</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ЕСЛИ ВДРУГ ПОДУМАЕШЬ, ЧТО ТЕБЯ НЕ ЛЮБЯТ (идея 12) -->
+        <div class="window-block nolove-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если тебе вдруг покажется, что тебя никто не любит</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="nolove-text">
+                    Если тебе вдруг покажется, что тебя никто не любит, вспомни, что есть человек,
+                    который писал все это ради тебя.  
+                    И этот человек я. И я люблю тебя намного сильнее, чем ты думаешь.
+                </p>
+            </div>
+        </div>
+
+        <!-- БЛОК "МАНИФЕСТ" (идея 13, отдельным акцентом) -->
+        <div class="manifest-block window-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Наш маленький манифест</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p class="three-things-text">
+                    Мы можем ссориться, уставать и иногда молчать.  
+                    Но в конце я хочу, чтобы это всегда было "мы", а не "я" и "ты по отдельности".
+                </p>
+            </div>
+        </div>
+
+        <!-- ЗА ЧТО Я БЛАГОДАРЕН -->
+        <div class="window-block thanks-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">За что я особенно благодарен тебе</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <ul>
+                    <li>за то, что не сдаешь нас, даже когда я туплю;</li>
+                    <li>за твой смех, голосовые и реакции, которые делают день легче;</li>
+                    <li>за то, что с тобой этот год не пустой, а настоящий;</li>
+                    <li>за то, что ты просто есть в моей жизни.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ПАМЯТЬ ДНЯ -->
+        <div class="window-block memory-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Сегодняшнее маленькое воспоминание</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p id="memoryText" class="memory-text"></p>
+            </div>
+        </div>
+
+        <!-- ЕСЛИ ЧИТАЕШЬ ПЕРЕД СНОМ -->
+        <div class="window-block bad-day-block reveal-on-scroll">
+            <button type="button" class="window-header">
+                <span class="window-title">Если ты читаешь это перед сном</span>
+                <span class="window-arrow">▼</span>
+            </button>
+            <div class="window-content">
+                <p id="beforeSleepText" class="bad-day-text"></p>
             </div>
         </div>
 
@@ -1747,7 +2051,7 @@
                 <div class="invite-divider"></div>
 
                 <p class="invite-text">
-                    Сегодня у нас первая годовщина. За этот год у нас было много всего, но самое главное - мы все равно вместе.
+                    Сегодня у нас первая годовщина. За этот год у нас было много всего, но самое главное то, что мы все равно вместе.
                 </p>
 
                 <p class="invite-text">
@@ -1757,7 +2061,7 @@
                 <div class="invite-details">
                     <div class="invite-row">
                         <div class="invite-label">Место</div>
-                        <div class="invite-value">секретное - такси отвезет прямо туда 😉</div>
+                        <div class="invite-value">секретное, такси отвезет прямо туда 😉</div>
                     </div>
                     <div class="invite-row">
                         <div class="invite-label">Дресс-код</div>
@@ -1776,7 +2080,7 @@
                 </div>
 
                 <p class="invite-text">
-                    Спасибо тебе за этот год - за твой смех, твои голосовые, твои объятия и за то, что ты не сдаешь нас.
+                    Спасибо тебе за этот год за твой смех, твои голосовые, твои объятия и за то, что ты не сдаешь нас.
                 </p>
 
                 <div class="evening-block">
@@ -1842,19 +2146,19 @@
                 я все равно за тебя, я хочу, чтобы ты не сдавалась и помнила, что мне можно написать в любое время.
             </div>
             <div id="missyouLink" class="missyou-link">
-                Если скучаешь - нажми сюда тихо.
+                Если скучаешь нажми сюда тихо.
             </div>
             <div id="missyouSecret" class="missyou-secret">
                 Если ты сейчас скучаешь, знай: я тоже хочу, чтобы мы были ближе, чем просто через экран.
-                Даже если я занят - твое "я скучаю" для меня очень важно.
+                Даже если я занят, твое "я скучаю" для меня очень важно.
             </div>
             <div id="futureLink" class="future-link">
                 Обращение к будущей Жанеке.
             </div>
             <div id="futureSecret" class="future-secret">
-                Если ты читаешь это уже через несколько лет:
+                Если ты читаешь это уже через несколько лет,
                 я надеюсь, что ты все так же улыбаешься и что я все так же рядом.
-                И если вдруг нет - знай, в тот момент, пока я писал это, я был очень счастлив, что ты у меня есть.
+                И если вдруг нет, знай, в тот момент, пока я писал это, я был очень счастлив, что ты у меня есть.
             </div>
             <div class="footer-line">
                 Если мы когда-нибудь откроем этот сайт через пару лет, я хочу, чтобы ты знала:
@@ -1873,13 +2177,13 @@
             мир точно станет чуточку счастливее.
         </p>
         <p class="invite-overlay-small">
-            Я обещаю сделать этот вечер особенным - только для нас двоих.
+            Я обещаю сделать этот вечер особенным только для нас двоих.
             Спасибо, что уже год ты рядом, с тобой я чувствую себя по-настоящему счастливым.
         </p>
         <p class="invite-overlay-small">
             Этот сюрприз я готовил для тебя заранее,
             потому что ты для меня намного важнее, чем ты думаешь.
-            - твой Диас 💫
+            твой Диас 💫
         </p>
         <button class="invite-overlay-close" id="inviteClose">
             хорошо, жду этот вечер
@@ -1896,7 +2200,7 @@
     window.addEventListener("load", function () {
         setTimeout(function () {
             document.body.classList.add("intro-done");
-        }, 1300);
+        }, 1500);
     });
 
     function vibrate(ms) {
@@ -2241,9 +2545,10 @@
         });
     }
 
-    // Dynamic greeting
+    // Dynamic greeting + интро
     const greetingEl = document.getElementById("greeting");
-    if (greetingEl) {
+    const introTextEl = document.getElementById("introText");
+    if (greetingEl && introTextEl) {
         const now = new Date();
         const h = now.getHours();
         let text = "";
@@ -2255,6 +2560,7 @@
             text = "Если ты это читаешь ночью, знай: я все равно хочу, чтобы ты выспалась, жаным❤️";
         }
         greetingEl.textContent = text;
+        introTextEl.textContent = text;
     }
 
     // Сообщение дня от Диаса
@@ -2284,8 +2590,8 @@
         const workMessages = [
             "Если я долго не отвечаю, скорее всего я на учебе или занят делами. Это не значит, что ты для меня менее важна.",
             "Если от меня нет ответа, почти всегда это про дела, а не про то, что ты мне надоела. Ты мне вообще не надоедаешь.",
-            "Когда у меня забитый день, мысль о тебе - это то, что держит меня в тонусе, а не наоборот.",
-            "Если я пропал на время, просто знай: пары, работа или дела закончатся - а ты для меня все равно останешься главной.",
+            "Когда у меня забитый день, мысль о тебе это то, что держит меня в тонусе, а не наоборот.",
+            "Если я пропал на время, просто знай: пары, работа или дела закончатся, а ты для меня все равно останешься главной.",
             "Даже если я не могу сразу ответить, я вижу твое сообщение и мысленно обнимаю тебя."
         ];
 
@@ -2293,7 +2599,7 @@
             "Если я не отвечаю, это не про то, что ты мне не важна. Я все равно хочу быть с тобой и дальше.",
             "Если я немного пропал, знай: я все равно вернусь к тебе в чат и снова выберу тебя.",
             "Иногда мне нужно время, но это время не отменяет того, как сильно ты для меня важна.",
-            "Если тебе вдруг кажется, что ты одна - вспомни, что есть человек, который всегда за тебя. Это я.",
+            "Если тебе вдруг кажется, что ты одна, вспомни, что есть человек, который всегда за тебя. Это я.",
             "Даже когда я молчу, это не значит, что я забыл про тебя. Просто иногда день слишком шумный."
         ];
 
@@ -2355,7 +2661,7 @@
 
     if (smileNo && smileText) {
         smileNo.addEventListener("click", () => {
-            setSmile("Значит, у меня появилась задача - сделать так, чтобы ты улыбнулась. Я ее не брошу.");
+            setSmile("Значит, у меня появилась задача сделать так, чтобы ты улыбнулась. Я ее не брошу.");
             vibrate(15);
         });
     }
@@ -2386,7 +2692,7 @@
                 "Если ты читаешь это перед сном, я хочу, чтобы ты выспалась. Даже если мы в ссоре или день был тяжелым, я все равно хочу, чтобы ты отдыхала, жаным. Завтра будет новый день, а я все равно буду за тебя.";
         } else {
             beforeSleepText.textContent =
-                "Когда будешь читать это перед сном, пожалуйста, вспомни, что я хочу, чтобы ты не засиживалась до поздней ночи и заботилась о себе. Я хочу, чтобы ты просыпалась не выжатой, а хоть чуть-чуть отдохнувшей.";
+                "Когда будешь читать это перед сном, пожалуйста, вспомни, что я хочу, чтобы ты не засиживалась до поздней ночи и заботилась о себе. Я хочу, чтобы ты просыпалась не выжатой, а хотя бы чуть-чуть отдохнувшей.";
         }
     }
 
@@ -2462,6 +2768,65 @@
     }, { threshold: 0.15 });
 
     revealEls.forEach(el => observer.observe(el));
+
+    // "Окошки" window-block
+    const windowHeaders = document.querySelectorAll(".window-header");
+    windowHeaders.forEach(header => {
+        header.addEventListener("click", () => {
+            const block = header.closest(".window-block");
+            if (!block) return;
+            const isOpen = block.classList.contains("open");
+            block.classList.toggle("open");
+            vibrate(12);
+            if (!isOpen) {
+                const rect = block.getBoundingClientRect();
+                if (rect.top < 0 || rect.bottom > window.innerHeight) {
+                    block.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+        });
+    });
+
+    // Игра с сердечками (идея 9)
+    const heartButtons = document.querySelectorAll(".heartgame-btn");
+    const heartGameText = document.getElementById("heartGameText");
+    const heartMessages = [
+        "Ты не представляешь, как сильно я хочу обнять тебя прямо сейчас.",
+        "Ты красивая даже в те дни, когда сама так не думаешь.",
+        "Если ты вдруг сомневаешься в себе, знай: я в тебе не сомневаюсь.",
+        "Если бы можно было, я бы сейчас просто сидел рядом и слушал твой голос.",
+        "Ты для меня не просто часть жизни, ты та, без кого я не хочу эту жизнь представлять.",
+        "Ты правда та девушка, с которой я хочу дойти до конца, а не просто пройти этап."
+    ];
+    if (heartButtons && heartGameText) {
+        heartButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const text = heartMessages[Math.floor(Math.random() * heartMessages.length)];
+                heartGameText.textContent = text;
+                vibrate(10);
+            });
+        });
+    }
+
+    // Редкая фраза (идея 14)
+    const rareHint = document.getElementById("rareHint");
+    if (rareHint) {
+        const rareMessages = [
+            "Если ты это видишь, знай: я люблю тебя именно сейчас.",
+            "Я бы сейчас очень хотел просто обнять тебя.",
+            "Иногда я могу не писать, но это не значит, что я не думаю о тебе.",
+            "Ты намного важнее, чем все люди, которые могут меня отвлечь.",
+            "Если день странный, помни: у тебя есть я."
+        ];
+        const chance = Math.random();
+        if (chance < 0.5) {
+            const msg = rareMessages[Math.floor(Math.random() * rareMessages.length)];
+            rareHint.textContent = msg;
+            setTimeout(() => {
+                rareHint.classList.add("show");
+            }, 2000);
+        }
+    }
 </script>
 
 </body>
