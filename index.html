@@ -11,6 +11,9 @@
 
     :root {
         --transition-speed: 0.45s;
+        --radius-big: 24px;
+        --radius-medium: 18px;
+        --radius-pill: 999px;
     }
 
     body {
@@ -19,23 +22,22 @@
         font-family: "Arial", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         color: #ffeefe;
         overflow-x: hidden;
-        background: radial-gradient(circle at top, #ffc0e8 0, #ff7aa2 25%, #2a1844 65%, #05000b 100%);
+        background: radial-gradient(circle at top, #ffcbe8 0, #ff8fb8 30%, #371d5a 65%, #080013 100%);
         background-attachment: fixed;
         background-size: 260% 260%;
-        animation: bgMove 25s ease-in-out infinite;
-        --bg-gradient: radial-gradient(circle at top, #ffc0e8 0, #ff7aa2 25%, #2a1844 65%, #05000b 100%);
+        animation: bgMove 26s ease-in-out infinite;
         --card-bg: rgba(10, 3, 25, 0.94);
         --card-border: rgba(255, 184, 255, 0.4);
-        --card-shadow: 0 0 28px rgba(255, 118, 196, 0.9);
-        --text-main: #ffeefe;
+        --text-main: #fff3ff;
         --text-soft: #ffdff7;
         --text-muted: #f7c7f3;
         --accent: #ff5cab;
         --accent-soft: #ffb7e5;
         --chip-bg: rgba(255, 165, 223, 0.12);
-        --section-bg: radial-gradient(circle at top left, rgba(255, 165, 223, 0.14), rgba(40, 14, 70, 0.96));
-        --section-border: rgba(255, 210, 255, 0.5);
-        --section-shadow: 0 0 20px rgba(255, 145, 215, 0.7);
+        --section-bg: radial-gradient(circle at top left, rgba(255, 165, 223, 0.16), rgba(40, 14, 70, 0.96));
+        --section-border: rgba(255, 210, 255, 0.55);
+        --shadow-soft: 0 0 18px rgba(255, 150, 230, 0.6);
+        --shadow-strong: 0 0 26px rgba(255, 140, 220, 0.9);
         --pill-button-bg: linear-gradient(135deg, #ff2e63, #ff8ac7);
         --pill-button-shadow: 0 0 18px rgba(255, 118, 196, 0.9);
         transition:
@@ -45,22 +47,21 @@
     }
 
     body[data-theme="light"] {
-        background: radial-gradient(circle at top, #ffe9f7 0, #ffd1ec 35%, #fbe4ff 70%, #f9f5ff 100%);
-        --bg-gradient: radial-gradient(circle at top, #ffe9f7 0, #ffd1ec 35%, #fbe4ff 70%, #f9f5ff 100%);
-        --card-bg: rgba(255, 250, 255, 0.94);
-        --card-border: rgba(255, 166, 222, 0.7);
-        --card-shadow: 0 0 24px rgba(255, 140, 210, 0.5);
+        background: radial-gradient(circle at top, #ffeef8 0, #ffd7ee 35%, #fbeeff 70%, #faf6ff 100%);
+        --card-bg: rgba(255, 250, 255, 0.96);
+        --card-border: rgba(255, 182, 230, 0.85);
         --text-main: #2a163b;
         --text-soft: #4a245e;
         --text-muted: #7a4c94;
         --accent: #ff4f9d;
         --accent-soft: #ff77b9;
-        --chip-bg: rgba(255, 170, 224, 0.2);
-        --section-bg: radial-gradient(circle at top left, rgba(255, 205, 241, 0.26), rgba(252, 245, 255, 0.98));
-        --section-border: rgba(255, 170, 230, 0.8);
-        --section-shadow: 0 0 18px rgba(255, 160, 225, 0.5);
+        --chip-bg: rgba(255, 180, 230, 0.24);
+        --section-bg: radial-gradient(circle at top left, rgba(255, 214, 244, 0.38), rgba(252, 246, 255, 0.98));
+        --section-border: rgba(255, 180, 230, 0.9);
+        --shadow-soft: 0 0 16px rgba(255, 165, 230, 0.55);
+        --shadow-strong: 0 0 22px rgba(255, 160, 225, 0.7);
         --pill-button-bg: linear-gradient(135deg, #ff4f9d, #ff94d0);
-        --pill-button-shadow: 0 0 20px rgba(255, 160, 228, 0.7);
+        --pill-button-shadow: 0 0 18px rgba(255, 160, 228, 0.7);
     }
 
     @keyframes bgMove {
@@ -73,42 +74,42 @@
         position: fixed;
         border-radius: 50%;
         filter: blur(40px);
-        opacity: 0.7;
+        opacity: 0.65;
         z-index: 0;
         pointer-events: none;
         will-change: transform;
     }
 
     .glow.g1 {
-        width: 260px;
-        height: 260px;
-        background: rgba(255, 184, 255, 0.9);
+        width: 240px;
+        height: 240px;
+        background: rgba(255, 184, 255, 0.85);
         top: -40px;
         left: -30px;
         animation: floatGlow 18s ease-in-out infinite alternate;
     }
 
     .glow.g2 {
-        width: 260px;
-        height: 260px;
-        background: rgba(120, 110, 255, 0.9);
+        width: 240px;
+        height: 240px;
+        background: rgba(120, 110, 255, 0.85);
         bottom: -60px;
         right: -40px;
         animation: floatGlow 22s ease-in-out infinite alternate;
     }
 
     .glow.g3 {
-        width: 200px;
-        height: 200px;
+        width: 190px;
+        height: 190px;
         background: rgba(255, 120, 180, 0.8);
-        bottom: 15%;
+        bottom: 18%;
         left: 40%;
         animation: floatGlow 20s ease-in-out infinite alternate-reverse;
     }
 
     @keyframes floatGlow {
         from { transform: translateY(0) translateX(0); }
-        to   { transform: translateY(-30px) translateX(20px); }
+        to   { transform: translateY(-26px) translateX(18px); }
     }
 
     .star {
@@ -119,7 +120,7 @@
         background: rgba(255, 235, 255, 0.9);
         opacity: 0.7;
         z-index: 0;
-        animation: twinkle 3s ease-in-out infinite alternate;
+        animation: twinkle 3.4s ease-in-out infinite alternate;
         pointer-events: none;
     }
 
@@ -130,16 +131,16 @@
 
     .bg-photo {
         position: fixed;
-        width: 210px;
-        height: 270px;
+        width: 200px;
+        height: 260px;
         background-size: cover;
         background-position: center;
-        border-radius: 26px;
+        border-radius: var(--radius-big);
         filter: blur(1px) brightness(0.9);
-        opacity: 0.24;
+        opacity: 0.22;
         z-index: 0;
-        box-shadow: 0 0 25px rgba(255, 149, 214, 0.7);
-        animation: float 18s ease-in-out infinite alternate;
+        box-shadow: var(--shadow-soft);
+        animation: float 20s ease-in-out infinite alternate;
         will-change: transform;
     }
 
@@ -156,24 +157,24 @@
     }
     .bg-photo.three {
         top: 10%;
-        right: 12%;
-        width: 190px;
-        height: 250px;
+        right: 11%;
+        width: 180px;
+        height: 240px;
         background-image: url("us3.jpg.jpeg");
         animation-delay: 6s;
     }
     .bg-photo.four {
         bottom: 12%;
         left: 10%;
-        width: 190px;
-        height: 250px;
+        width: 180px;
+        height: 240px;
         background-image: url("us4.jpg.jpeg");
         animation-delay: 9s;
     }
 
     @keyframes float {
-        from { transform: translateY(0) rotate(-3deg); }
-        to   { transform: translateY(-25px) rotate(3deg); }
+        from { transform: translateY(0) rotate(-2deg); }
+        to   { transform: translateY(-22px) rotate(2deg); }
     }
 
     .wrapper {
@@ -182,22 +183,23 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 70px 16px 60px;
+        padding: 70px 12px 60px;
         z-index: 1;
     }
 
     .card {
         max-width: 860px;
         width: 100%;
-        padding: 30px 22px 32px;
-        border-radius: 26px;
+        padding: 26px 20px 30px;
+        border-radius: var(--radius-big);
         background: var(--card-bg);
         border: 1px solid var(--card-border);
-        box-shadow: var(--card-shadow);
+        box-shadow: var(--shadow-strong);
         backdrop-filter: blur(18px);
         text-align: center;
         animation: fadeIn 1.4s ease;
         color: var(--text-main);
+        margin: 0 auto;
     }
 
     @keyframes fadeIn {
@@ -225,34 +227,33 @@
         text-transform: uppercase;
         color: var(--text-soft);
         padding: 6px 14px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         border: 1px solid rgba(255, 210, 255, 0.8);
-        background: rgba(12, 4, 30, 0.82);
-        box-shadow: 0 0 15px rgba(255, 160, 230, 0.9);
+        background: rgba(12, 4, 30, 0.86);
+        box-shadow: var(--shadow-soft);
         cursor: default;
         white-space: nowrap;
     }
 
     body[data-theme="light"] .logo {
         background: rgba(255, 245, 255, 0.96);
-        box-shadow: 0 0 12px rgba(255, 150, 220, 0.65);
         color: #612055;
     }
 
     .theme-toggle {
         pointer-events: auto;
         border: none;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         padding: 6px 12px;
         font-size: 14px;
         cursor: pointer;
         background: rgba(12, 4, 30, 0.85);
         color: var(--accent-soft);
-        box-shadow: 0 0 16px rgba(255, 170, 240, 0.9);
+        box-shadow: var(--shadow-soft);
         display: flex;
         align-items: center;
         gap: 4px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.35s ease;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.35s ease;
     }
 
     .theme-toggle span {
@@ -261,7 +262,7 @@
 
     .theme-toggle:hover {
         transform: translateY(-1px);
-        box-shadow: 0 0 22px rgba(255, 170, 240, 1);
+        box-shadow: var(--shadow-strong);
     }
 
     body[data-theme="light"] .theme-toggle {
@@ -289,8 +290,8 @@
         font-size: 30px;
         line-height: 1.3;
         text-shadow:
-            0 0 10px #ff99cc,
-            0 0 22px #ff2e63;
+            0 0 10px rgba(255, 153, 204, 0.9),
+            0 0 22px rgba(255, 46, 99, 0.7);
         min-height: 1.3em;
     }
 
@@ -308,8 +309,19 @@
     }
 
     .heart-line {
-        font-size: 22px;
+        font-size: 20px;
         margin: 8px 0 18px;
+    }
+
+    .divider-line {
+        margin: 10px 0 18px;
+        font-size: 12px;
+        color: var(--accent-soft);
+        opacity: 0.9;
+    }
+
+    .divider-line span {
+        opacity: 0.8;
     }
 
     .text {
@@ -340,10 +352,10 @@
         font-size: 15px;
         line-height: 1.5;
         color: var(--text-main);
-        border-radius: 16px;
+        border-radius: var(--radius-medium);
         background: var(--section-bg);
         border: 1px solid var(--section-border);
-        box-shadow: var(--section-shadow);
+        box-shadow: var(--shadow-soft);
         font-style: italic;
         opacity: 0;
         transition: opacity 0.8s ease;
@@ -355,19 +367,20 @@
     }
 
     .timer-block {
-        margin: 18px auto 10px;
+        margin: 18px auto 12px;
         padding: 10px 14px;
         max-width: 360px;
-        border-radius: 20px;
-        background: radial-gradient(circle at top, rgba(255, 160, 220, 0.21), rgba(54, 21, 87, 0.9));
-        border: 1px solid rgba(255, 210, 255, 0.6);
-        box-shadow: 0 0 20px rgba(255, 150, 230, 0.6);
+        border-radius: var(--radius-pill);
+        background: radial-gradient(circle at top,
+            rgba(255, 160, 220, 0.22),
+            rgba(54, 21, 87, 0.9));
+        border: 1px solid rgba(255, 210, 255, 0.65);
+        box-shadow: var(--shadow-soft);
     }
 
     body[data-theme="light"] .timer-block {
-        background: radial-gradient(circle at top, rgba(255, 218, 244, 0.95), rgba(251, 243, 255, 0.98));
+        background: radial-gradient(circle at top, rgba(255, 218, 244, 0.96), rgba(251, 243, 255, 0.98));
         border-color: rgba(255, 175, 230, 0.9);
-        box-shadow: 0 0 18px rgba(255, 160, 225, 0.6);
     }
 
     .timer-title {
@@ -390,31 +403,35 @@
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
-        margin: 20px 0 16px;
+        margin: 20px 0 14px;
     }
 
     button {
         border: none;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         padding: 12px 24px;
         font-size: 15px;
         cursor: pointer;
         background: var(--pill-button-bg);
         color: #fff;
         box-shadow: var(--pill-button-shadow);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+        transition:
+            transform 0.16s ease,
+            box-shadow 0.16s ease,
+            opacity 0.16s ease,
+            filter 0.16s ease;
         white-space: nowrap;
     }
 
     button:hover {
         transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 0 26px rgba(255, 170, 240, 1);
+        box-shadow: var(--shadow-strong);
         filter: brightness(1.03);
     }
 
     button:active {
         transform: scale(0.97);
-        opacity: 0.92;
+        opacity: 0.9;
     }
 
     .btn-small {
@@ -426,18 +443,17 @@
         margin-top: 16px;
         display: none;
         text-align: left;
-        border-radius: 20px;
+        border-radius: var(--radius-big);
         padding: 18px 16px;
         background: radial-gradient(circle at top left, rgba(255, 129, 197, 0.42), rgba(63, 26, 92, 0.85));
         border: 1px solid rgba(255, 198, 255, 0.6);
-        box-shadow: 0 0 25px rgba(255, 153, 204, 0.7);
+        box-shadow: var(--shadow-soft);
         font-size: 16px;
     }
 
     body[data-theme="light"] #hidden-message {
-        background: radial-gradient(circle at top left, rgba(255, 214, 242, 0.96), rgba(255, 247, 255, 0.98));
+        background: radial-gradient(circle at top left, rgba(255, 214, 242, 0.97), rgba(255, 247, 255, 0.99));
         border-color: rgba(255, 183, 231, 0.9);
-        box-shadow: 0 0 22px rgba(255, 175, 230, 0.7);
     }
 
     #hidden-message p {
@@ -451,19 +467,19 @@
         opacity: 0.95;
     }
 
-    /* Пригласительная */
+    /* Пригласительная открытка */
 
     .invite-card {
-        margin-top: 0;
-        padding: 0 16px;
-        border-radius: 24px;
+        margin-top: 22px;
+        padding: 0;
+        border-radius: var(--radius-big);
         background: radial-gradient(circle at top, #5f146f 0, #b52c8b 40%, #ff60c7 100%);
         color: #ffeefe;
-        box-shadow: 0 0 30px rgba(255, 120, 210, 0.9);
+        box-shadow: var(--shadow-strong);
         overflow: hidden;
         max-height: 0;
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
         transition:
             max-height 0.55s ease,
             opacity 0.45s ease,
@@ -473,9 +489,8 @@
     }
 
     .invite-card.open {
-        margin-top: 20px;
         padding: 18px 16px 18px;
-        max-height: 700px;
+        max-height: 900px;
         opacity: 1;
         transform: translateY(0);
     }
@@ -485,10 +500,19 @@
         color: #3c1236;
     }
 
+    .invite-header {
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.9;
+        margin-bottom: 4px;
+        text-align: center;
+    }
+
     .invite-title {
-        font-size: 18px;
+        font-size: 19px;
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         text-align: center;
     }
 
@@ -502,27 +526,38 @@
     .invite-photo {
         width: 100%;
         max-height: 190px;
-        border-radius: 18px;
+        border-radius: var(--radius-medium);
         object-fit: cover;
-        margin-bottom: 10px;
-        box-shadow: 0 0 18px rgba(255, 198, 245, 0.9);
+        margin-bottom: 12px;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .invite-info {
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 6px 0;
+    }
+
+    .invite-info span {
+        display: block;
+        margin-bottom: 2px;
     }
 
     .invite-footer {
         margin-top: 10px;
         font-size: 13px;
-        opacity: 0.95;
+        opacity: 0.97;
     }
 
     .gallery-title {
-        margin-top: 26px;
+        margin-top: 24px;
         font-size: 16px;
         color: var(--text-soft);
         text-align: left;
     }
 
     .gallery {
-        margin-top: 12px;
+        margin-top: 10px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 9px;
@@ -530,18 +565,18 @@
 
     .gallery img {
         width: 100%;
-        height: 130px;
+        height: 120px;
         object-fit: cover;
-        border-radius: 18px;
-        box-shadow: 0 0 15px rgba(255, 150, 220, 0.7);
+        border-radius: var(--radius-medium);
+        box-shadow: var(--shadow-soft);
         filter: brightness(0.96);
-        transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+        transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
     }
 
     .gallery img:hover {
         transform: translateY(-3px) scale(1.03);
         filter: brightness(1.05);
-        box-shadow: 0 0 24px rgba(255, 195, 255, 0.9);
+        box-shadow: var(--shadow-strong);
     }
 
     .heart {
@@ -585,9 +620,9 @@
         transform: translateX(-50%) translateY(10px);
         background: rgba(12, 4, 30, 0.96);
         padding: 10px 18px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         border: 1px solid rgba(255, 210, 255, 0.9);
-        box-shadow: 0 0 22px rgba(255, 170, 240, 0.9);
+        box-shadow: var(--shadow-soft);
         font-size: 13px;
         opacity: 0;
         pointer-events: none;
@@ -609,7 +644,7 @@
     }
 
     .sections {
-        margin-top: 26px;
+        margin-top: 24px;
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -617,10 +652,7 @@
     }
 
     .section {
-        border-radius: 18px;
-        background: transparent;
-        border: none;
-        box-shadow: none;
+        border-radius: var(--radius-medium);
         overflow: hidden;
         transform: translateY(4px);
         opacity: 0;
@@ -635,10 +667,10 @@
     .section-header {
         width: 100%;
         text-align: left;
-        border-radius: 18px;
+        border-radius: var(--radius-medium);
         background: rgba(20, 5, 40, 0.9);
         border: 1px solid rgba(255, 188, 255, 0.6);
-        box-shadow: 0 0 16px rgba(255, 150, 230, 0.7);
+        box-shadow: var(--shadow-soft);
         padding: 11px 14px;
         display: flex;
         align-items: center;
@@ -651,7 +683,6 @@
     body[data-theme="light"] .section-header {
         background: rgba(255, 246, 255, 0.98);
         border-color: rgba(255, 180, 230, 0.9);
-        box-shadow: 0 0 16px rgba(255, 170, 235, 0.6);
     }
 
     .section-title-main {
@@ -661,10 +692,16 @@
         gap: 6px;
     }
 
+    .section-title-main span:first-child {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+
     .section-title-tag {
         font-size: 11px;
         padding: 2px 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         background: var(--chip-bg);
         color: var(--accent-soft);
     }
@@ -684,10 +721,10 @@
         overflow: hidden;
         padding: 0 12px;
         background: var(--section-bg);
-        border-radius: 0 0 18px 18px;
+        border-radius: 0 0 var(--radius-medium) var(--radius-medium);
         border: 1px solid var(--section-border);
         border-top: none;
-        box-shadow: var(--section-shadow);
+        box-shadow: var(--shadow-soft);
         transform: translateY(-6px);
         transition:
             max-height 0.5s ease,
@@ -698,7 +735,7 @@
 
     .section-body.open {
         padding: 12px 14px 14px;
-        max-height: 700px;
+        max-height: 680px;
         opacity: 1;
         transform: translateY(0);
     }
@@ -732,7 +769,7 @@
     .chip {
         font-size: 12px;
         padding: 4px 10px;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         background: var(--chip-bg);
         color: var(--accent-soft);
     }
@@ -820,11 +857,11 @@
     .intro-card {
         max-width: 330px;
         width: 86%;
-        border-radius: 24px;
+        border-radius: var(--radius-big);
         padding: 22px 18px 20px;
         background: var(--card-bg);
         border: 1px solid var(--card-border);
-        box-shadow: var(--card-shadow);
+        box-shadow: var(--shadow-strong);
         text-align: center;
         color: var(--text-main);
         transform: translateY(10px) scale(0.98);
@@ -859,10 +896,10 @@
 
     @media (max-width: 768px) {
         .wrapper {
-            padding: 70px 10px 50px;
+            padding: 70px 8px 50px;
         }
         .card {
-            padding: 24px 14px 28px;
+            padding: 22px 14px 26px;
         }
         h1 {
             font-size: 24px;
@@ -874,7 +911,7 @@
             font-size: 15px;
         }
         .gallery img {
-            height: 115px;
+            height: 110px;
         }
         .theme-toggle {
             padding: 5px 10px;
@@ -888,7 +925,7 @@
 
     @media (max-width: 480px) {
         .card {
-            border-radius: 22px;
+            border-radius: 20px;
         }
         .intro-card {
             width: 90%;
@@ -910,11 +947,11 @@
     <div class="intro-card">
         <div id="intro-greeting" class="intro-greeting">Жанека, привет 💗</div>
         <p class="intro-text">
-            Это наш маленький сайт только для тебя. Хочу, чтобы каждый раз, когда ты сюда заходишь,
+            Это наш маленький сайт только для тебя. Хочу, чтобы каждый раз, когда ты здесь,
             ты чувствовала себя любимой и нужной.
         </p>
         <p class="intro-note">
-            Если вдруг день был тяжелым, пусть здесь тебе станет хоть чуть-чуть легче.
+            Если вдруг день был тяжелым, пусть здесь тебе станет хоть немного легче.
         </p>
         <button id="intro-btn" type="button">Зайти в наш мир 💖</button>
     </div>
@@ -942,14 +979,14 @@
             </span>
         </h1>
         <div class="subtitle">
-            я правда рад, что этот год и все моменты были с тобой рядом 💗
+            я правда рад, что этот год и все его моменты были с тобой рядом 💗
         </div>
 
         <div class="heart-line">♡ ♡ ♡</div>
 
         <p class="text">
             Милая, за этот год ты стала для меня настоящим домом. С тобой спокойнее,
-            теплее и весь мир как будто меняет свои краски. Ты важна для меня намного сильнее, чем думаешь.
+            теплее и весь мир будто меняет свои краски. Ты для меня намного важнее, чем ты думаешь.
         </p>
         <p class="text">
             Как бы мы ни ругались и ни ссорились, внутри все равно одно чувство:
@@ -957,7 +994,7 @@
             пугает не ссора, а мысль, что вдруг могу тебя потерять.
         </p>
         <p class="text highlight">
-            Жаным, я очень сильно люблю тебя и правда верю, что мы дойдем до конца, до кольца ❤️
+            Жаным, я очень сильно люблю тебя и верю, что мы дойдем до конца, до кольца ❤️
         </p>
         <p class="text">
             Хочу, чтобы когда ты открываешь этот сайт, ты чувствовала то же тепло,
@@ -971,6 +1008,8 @@
             <div class="timer-values" id="timer">считаю наши дни...</div>
         </div>
 
+        <div class="divider-line"><span>· · · 💗 · · ·</span></div>
+
         <div class="btn-row">
             <button type="button" onclick="toggleMusic()">Наша песня - KETPE 🎵</button>
             <button type="button" onclick="showMessage()">Нажми сюда, жаным 💌</button>
@@ -981,27 +1020,35 @@
             Если музыка не играет, нажми на кнопку еще раз, браузер иногда тупит, а я нет 🎧
         </div>
 
-        <!-- Пригласительная открытка -->
+        <!-- Пригласительная большая открытка -->
 
         <div id="invite-card" class="invite-card">
+            <div class="invite-header">приглашение на наше свидание 💗</div>
+            <div class="invite-title">Жаным 🌸</div>
             <img src="us6.jpg.jpeg" alt="Мы с тобой" class="invite-photo">
-            <div class="invite-title">Жанека, ура 💘</div>
             <p class="invite-text">
-                Значит, в <b>16:00</b> <b>16.11.2025</b> мир точно станет чуть-чуть счастливее.
+                Сегодня для меня особенный день - ровно год, как мы вместе. Я очень хочу
+                отметить нашу годовщину по-особенному, просто вдвоем.
             </p>
             <p class="invite-text">
-                Я хочу сделать этот вечер спокойным и особенным только для нас двоих. Спасибо, что уже год
-                ты рядом. С тобой я чувствую себя по-настоящему счастливым.
+                Приглашаю тебя на свидание в честь нашего года вместе. Хочу, чтобы в этот день
+                ты ни о чем не переживала и просто позволила себе быть счастливой рядом со мной.
             </p>
+            <div class="invite-info">
+                <span>📍 Место встречи: секретное, такси отвезет тебя к мне.</span>
+                <span>👗 Дресс-код: любая одежда - в любом образе ты у меня самая красивая.</span>
+                <span>🕒 Время: 16:00</span>
+                <span>📅 Дата: 16.11.2025</span>
+            </div>
             <p class="invite-text">
-                Этот сюрприз я готовил для тебя заранее просто потому, что ты для меня правда важнее,
-                чем любые дела и планы. твой Диас 👀
+                Приходи, жаным. Пусть этот вечер станет началом еще одного, еще более красивого года
+                наших отношений. Я буду очень ждать тебя.
             </p>
             <button id="invite-ok" type="button" class="btn-small">
                 Я приду 💖
             </button>
             <div class="invite-footer">
-                Такси отвезет тебя туда, а я буду ждать тебя с улыбкой 💗
+                Такси заберет тебя, а я встречу тебя с улыбкой и очень счастливыми глазами 💗
             </div>
         </div>
 
@@ -1038,11 +1085,13 @@
             <img src="us6.jpg.jpeg" alt="Наш момент 4">
         </div>
 
+        <div class="divider-line"><span>· · · 💗 · · ·</span></div>
+
         <!-- Окошки -->
 
         <div class="sections">
 
-            <!-- Как ты сейчас -->
+            <!-- Как ты сейчас? -->
 
             <div class="section reveal">
                 <button class="section-header" type="button">
@@ -1070,7 +1119,7 @@
             <div class="section reveal">
                 <button class="section-header" type="button">
                     <div class="section-title-main">
-                        <span>Когда тебе по-разному 💭</span>
+                        <span>Когда тебе по-разному 💗</span>
                         <span class="section-title-tag">open when</span>
                     </div>
                     <span class="section-arrow">▼</span>
@@ -1155,7 +1204,7 @@
                 </div>
             </div>
 
-            <!-- Топ-5 причин -->
+            <!-- Причины -->
 
             <div class="section reveal">
                 <button class="section-header" type="button">
@@ -1200,7 +1249,7 @@
                 <button class="section-header" type="button">
                     <div class="section-title-main">
                         <span>Твои улыбки сегодня 😊</span>
-                        <span class="section-title-tag">игра для нас</span>
+                        <span class="section-title-tag">маленькая игра</span>
                     </div>
                     <span class="section-arrow">▼</span>
                 </button>
@@ -1217,27 +1266,6 @@
                             где-то там, думая о тебе 🩷
                         </p>
                     </div>
-                </div>
-            </div>
-
-            <!-- Что я еще хочу с тобой -->
-
-            <div class="section reveal">
-                <button class="section-header" type="button">
-                    <div class="section-title-main">
-                        <span>Что я еще хочу с тобой 💘</span>
-                        <span class="section-title-tag">желания</span>
-                    </div>
-                    <span class="section-arrow">▼</span>
-                </button>
-                <div class="section-body">
-                    <ul>
-                        <li>Увидеть, как ты счастлива без причины, просто так.</li>
-                        <li>День, когда ты скажешь: "Я же говорила, что справлюсь".</li>
-                        <li>Наши спокойные утра, где никто никуда не спешит.</li>
-                        <li>Хотя бы один день, когда ты вообще не паришься ни из-за чего.</li>
-                        <li>Момент, когда ты скажешь, что рада, что не сдалась в самых сложных местах.</li>
-                    </ul>
                 </div>
             </div>
 
@@ -1310,7 +1338,7 @@
                 </div>
             </div>
 
-            <!-- Если нам очень тяжело -->
+            <!-- Если нам будет очень тяжело -->
 
             <div class="section reveal">
                 <button class="section-header" type="button">
@@ -1334,7 +1362,7 @@
 
         </div>
 
-        <!-- Тихие блоки без рамок -->
+        <!-- Тихие блоки -->
 
         <div class="quiet-blocks">
             <div class="quiet-block">
@@ -1395,22 +1423,22 @@
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        heart.style.animationDuration = (3.4 + Math.random() * 3) + "s";
         heart.innerHTML = "❤️";
         document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }, 420);
+        setTimeout(() => heart.remove(), 6500);
+    }, 520);
 
     // Вспышка сердечек
     function burstHearts() {
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
-        for (let i = 0; i < 26; i++) {
+        for (let i = 0; i < 24; i++) {
             const h = document.createElement("div");
             h.className = "burst-heart";
             h.textContent = "💗";
             const angle = Math.random() * Math.PI * 2;
-            const distance = 80 + Math.random() * 80;
+            const distance = 70 + Math.random() * 90;
             const tx = Math.cos(angle) * distance;
             const ty = Math.sin(angle) * distance;
             h.style.left = centerX + "px";
@@ -1460,8 +1488,9 @@
     // Письмо
     function showMessage() {
         const msg = document.getElementById("hidden-message");
-        msg.style.display = (msg.style.display === "block") ? "none" : "block";
-        if (msg.style.display === "block") {
+        const isOpen = msg.style.display === "block";
+        msg.style.display = isOpen ? "none" : "block";
+        if (!isOpen) {
             msg.scrollIntoView({ behavior: "smooth", block: "center" });
         }
         vibe(30);
@@ -1534,7 +1563,7 @@
     // Цитаты
     const quotes = [
         "С тобой даже обычный день кажется особенным.",
-        "Иногда я просто молчу, потому что хочу просто быть рядом с тобой.",
+        "Иногда я просто молчу, потому что хочу быть рядом с тобой.",
         "Мне не нужно много людей вокруг, когда есть ты.",
         "Я хочу, чтобы у нас было больше \"мы\", чем \"я\" и \"ты\".",
         "Ты тот человек, о котором я благодарю Всевышнего перед сном.",
@@ -1618,11 +1647,11 @@
         const hours = new Date().getHours();
         let text;
         if (hours >= 5 && hours < 12) {
-            text = "Если бы я был рядом сейчас утром, я бы сказал тебе не спешить, спокойно начать день и помнить, что ты у меня большая умница.";
+            text = "Если бы я был рядом сейчас утром, я бы попросил тебя не спешить, спокойно начать день и помнить, что ты у меня большая умница.";
         } else if (hours >= 12 && hours < 18) {
-            text = "Если бы я был рядом днем, я бы сказал тебе дышать чуть спокойнее, не загонять себя и помнить, что у тебя правда много сил.";
+            text = "Если бы я был рядом днем, я бы напомнил тебе дышать чуть спокойнее и не загонять себя. У тебя правда много сил.";
         } else {
-            text = "Если бы я был рядом вечером или ночью, я бы сказал тебе оставить лишние мысли на завтра и просто дать себе отдохнуть. Ты этого заслуживаешь.";
+            text = "Если бы я был рядом вечером или ночью, я бы попросил тебя оставить лишние мысли на завтра и просто дать себе отдохнуть. Ты этого заслуживаешь.";
         }
         sayNowEl.textContent = text;
     }
