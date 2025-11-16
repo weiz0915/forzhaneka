@@ -34,7 +34,7 @@
         --text-muted: #f7c7f3;
         --accent: #ff5cab;
         --accent-soft: #ffb7e5;
-        --chip-bg: rgba(255, 165, 223, 0.12);
+        --chip-bg: rgba(255, 180, 230, 0.16);
         --section-bg: radial-gradient(circle at top left, rgba(255, 165, 223, 0.16), rgba(40, 14, 70, 0.96));
         --section-border: rgba(255, 210, 255, 0.55);
         --shadow-soft: 0 0 18px rgba(255, 150, 230, 0.6);
@@ -240,6 +240,7 @@
     }
 
     .card {
+        position: relative;
         max-width: 860px;
         width: 100%;
         padding: 26px 20px 34px;
@@ -252,6 +253,31 @@
         animation: fadeIn 1.4s ease;
         color: var(--text-main);
         margin: 0 auto;
+        overflow: hidden;
+    }
+
+    /* лёгкая текстура на основной карточке */
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background-image:
+            radial-gradient(circle at 0 0, rgba(255,255,255,0.04) 0, transparent 55%),
+            radial-gradient(circle at 100% 100%, rgba(0,0,0,0.08) 0, transparent 55%);
+        opacity: 0.35;
+        mix-blend-mode: soft-light;
+    }
+
+    .card.theme-bump {
+        animation: bumpCard 0.45s ease;
+    }
+
+    @keyframes bumpCard {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+        100% { transform: translateY(0); }
     }
 
     @keyframes fadeIn {
@@ -356,6 +382,7 @@
             0 0 22px rgba(255, 46, 99, 0.7);
         min-height: 1.3em;
         animation: titleGlow 6s ease-in-out infinite;
+        text-align: center;
     }
 
     @keyframes titleGlow {
@@ -375,7 +402,7 @@
         font-size: 16px;
         margin-bottom: 16px;
         color: var(--text-soft);
-        text-align: left;
+        text-align: center;
     }
 
     .heart-line {
@@ -388,10 +415,22 @@
         font-size: 12px;
         color: var(--accent-soft);
         opacity: 0.9;
+        text-align: center;
     }
 
-    .divider-line span {
-        opacity: 0.8;
+    .divider-inner {
+        opacity: 0.9;
+    }
+
+    .divider-heart {
+        display: inline-block;
+        animation: dividerBeat 3s ease-in-out infinite;
+    }
+
+    @keyframes dividerBeat {
+        0% { transform: scale(1); opacity: 0.85; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.85; }
     }
 
     .text {
@@ -426,6 +465,7 @@
         opacity: 0;
         transition: opacity 0.8s ease;
         min-height: 3em;
+        text-align: left;
     }
 
     .quote.show {
@@ -441,6 +481,7 @@
         border: 1px solid rgba(255, 210, 255, 0.65);
         box-shadow: var(--shadow-soft);
         backdrop-filter: blur(18px);
+        text-align: center;
     }
 
     body[data-theme="light"] .timer-block {
@@ -485,7 +526,7 @@
         transition:
             transform 0.16s ease,
             box-shadow 0.16s ease,
-            opacity 0.16s.ease,
+            opacity 0.16s ease,
             filter 0.16s ease;
         white-space: nowrap;
     }
@@ -554,6 +595,7 @@
         font-size: 12px;
         color: var(--text-muted);
         opacity: 0.95;
+        text-align: center;
     }
 
     /* Пригласительная открытка */
@@ -573,8 +615,27 @@
             max-height 0.55s ease,
             opacity 0.45s ease,
             margin-top 0.45s ease,
-            padding 0.45s ease,
+            padding 0.45s.ease,
             transform 0.45s ease;
+        position: relative;
+        border: 1px solid transparent;
+        background-clip: padding-box;
+    }
+
+    /* градиентная рамка у пригласительной */
+    .invite-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, #ff9ad6, #ffd38f);
+        -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
     }
 
     .invite-card.open {
@@ -625,6 +686,7 @@
         font-size: 14px;
         line-height: 1.6;
         margin: 6px 0;
+        text-align: left;
     }
 
     .invite-info span {
@@ -636,13 +698,14 @@
         margin-top: 10px;
         font-size: 13px;
         opacity: 0.97;
+        text-align: left;
     }
 
     .gallery-title {
         margin-top: 24px;
         font-size: 16px;
         color: var(--text-soft);
-        text-align: left;
+        text-align: center;
     }
 
     .gallery {
@@ -747,7 +810,7 @@
     }
 
     .sections {
-        margin-top: 24px;
+        margin-top: 28px;
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -771,7 +834,7 @@
 
     .section-header {
         width: 100%;
-        text-align: left;
+        text-align: center;
         border-radius: var(--radius-medium);
         background: rgba(20, 5, 40, 0.9);
         border: 1px solid rgba(255, 188, 255, 0.6);
@@ -779,11 +842,11 @@
         padding: 11px 14px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        justify-content: center;
+        gap: 8px;
         cursor: pointer;
         color: var(--text-soft);
-        transition: transform 0.18s ease, box-shadow 0.18s.ease;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .section-header:hover {
@@ -797,10 +860,16 @@
     }
 
     .section-title-main {
-        font-size: 14px;
+        flex: 1;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 6px;
+        text-align: center;
+        gap: 2px;
+    }
+
+    .section-title-main span:first-child {
+        font-size: 14px;
     }
 
     .section-title-tag {
@@ -836,6 +905,7 @@
             opacity 0.35s ease,
             transform 0.4s ease,
             padding 0.4s ease;
+        position: relative;
     }
 
     .section-body.open {
@@ -850,6 +920,14 @@
         font-size: 14px;
         line-height: 1.6;
         color: var(--text-main);
+        text-align: left;
+    }
+
+    /* заголовки внутри секций по центру */
+    .section-body b {
+        display: block;
+        text-align: center;
+        margin-bottom: 4px;
     }
 
     .section-body ul {
@@ -862,6 +940,7 @@
         line-height: 1.6;
         margin-bottom: 4px;
         color: var(--text-main);
+        text-align: left;
     }
 
     .mood-buttons {
@@ -879,6 +958,7 @@
         opacity: 0;
         transform: translateY(4px);
         transition: opacity 0.25s ease, transform 0.25s ease;
+        text-align: left;
     }
 
     .mood-text.show {
@@ -897,6 +977,7 @@
     .smile-line {
         font-size: 14px;
         color: var(--accent-soft);
+        text-align: left;
     }
 
     .quiet-blocks {
@@ -913,10 +994,17 @@
         line-height: 1.7;
     }
 
+    .quiet-block b {
+        display: block;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
     .support-text {
         margin-top: 4px;
         font-size: 14px;
         color: var(--text-main);
+        text-align: left;
     }
 
     .checklist {
@@ -950,16 +1038,46 @@
         border-radius: var(--radius-big);
         padding: 14px 16px 14px;
         background: rgba(18, 6, 40, 0.9);
-        border: 1px solid rgba(255, 200, 255, 0.6);
+        border: 1px solid transparent;
         box-shadow: var(--shadow-soft);
         text-align: left;
         font-size: 14px;
         color: var(--text-soft);
+        position: relative;
+        background-clip: padding-box;
+        animation: cardBreath 7s ease-in-out infinite;
+    }
+
+    /* градиентная рамка прогресс-карточки */
+    .progress-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, #ff9ad6, #ffd38f);
+        -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    @keyframes cardBreath {
+        0%   { transform: translateY(0); box-shadow: var(--shadow-soft); }
+        50%  { transform: translateY(-2px); box-shadow: 0 0 28px rgba(255, 160, 228, 0.95); }
+        100% { transform: translateY(0); box-shadow: var(--shadow-soft); }
     }
 
     body[data-theme="light"] .progress-card {
         background: rgba(255, 247, 255, 0.98);
-        border-color: rgba(255, 183, 231, 0.9);
+    }
+
+    .progress-card > b {
+        display: block;
+        text-align: center;
+        margin-bottom: 4px;
     }
 
     .progress-bar {
@@ -973,7 +1091,7 @@
     }
 
     .progress-fill {
-        width: 35%; /* до Астаны ещё далеко :) */
+        width: 35%;
         height: 100%;
         border-radius: 999px;
         background: linear-gradient(90deg, #ff5cab, #ffb7e5, var(--gold));
@@ -1031,7 +1149,28 @@
     .footer-stamp {
         margin-top: 12px;
         font-size: 11px;
-        color: rgba(255, 228, 255, 0.7);
+        background: linear-gradient(90deg, #ffb7e5, #ffffff, #ffb7e5);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 200% 100%;
+        animation: footerShine 12s linear infinite;
+    }
+
+    @keyframes footerShine {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .footer-stamp.highlight {
+        animation: footerGlow 0.9s ease-out, footerShine 12s linear infinite;
+    }
+
+    @keyframes footerGlow {
+        0% { text-shadow: 0 0 0 rgba(255,180,230,0); }
+        50% { text-shadow: 0 0 18px rgba(255,180,230,0.95); }
+        100% { text-shadow: 0 0 0 rgba(255,180,230,0); }
     }
 
     .infinity-glow {
@@ -1043,10 +1182,6 @@
         0% { transform: scale(1); text-shadow: 0 0 0 rgba(255,120,200,0); }
         50% { transform: scale(1.1); text-shadow: 0 0 12px rgba(255,120,200,0.9); }
         100% { transform: scale(1); text-shadow: 0 0 0 rgba(255,120,200,0); }
-    }
-
-    body[data-theme="light"] .footer-stamp {
-        color: rgba(122, 76, 148, 0.7);
     }
 
     /* Intro overlay */
@@ -1086,6 +1221,8 @@
         transform: translateY(10px) scale(0.98);
         opacity: 0;
         animation: introPop 0.7s ease forwards;
+        position: relative;
+        overflow: hidden;
     }
 
     @keyframes introPop {
@@ -1099,9 +1236,11 @@
         font-size: 16px;
         margin-bottom: 16px;
         color: var(--accent-soft);
+        text-align: center;
     }
 
     /* анимации */
+
     @keyframes softPulse {
         0% {
             transform: scale(1);
@@ -1129,6 +1268,37 @@
         0% { background-color: rgba(20, 5, 40, 0.9); }
         50% { background-color: rgba(35, 10, 70, 0.95); }
         100% { background-color: rgba(20, 5, 40, 0.9); }
+    }
+
+    /* кнопка вверх */
+
+    .to-top-btn {
+        position: fixed;
+        right: 16px;
+        bottom: 18px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: var(--pill-button-bg);
+        box-shadow: var(--pill-button-shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        z-index: 10;
+    }
+
+    .to-top-btn.show {
+        opacity: 0.9;
+        pointer-events: auto;
+    }
+
+    .to-top-btn:hover {
+        transform: translateY(-2px) scale(1.05);
     }
 
     @media (max-width: 768px) {
@@ -1243,7 +1413,9 @@
             <div class="timer-values" id="timer">считаю наши дни...</div>
         </div>
 
-        <div class="divider-line"><span>· · · 💗 · · ·</span></div>
+        <div class="divider-line">
+            <span class="divider-inner">· · · <span class="divider-heart">💗</span> · · ·</span>
+        </div>
 
         <div class="btn-row">
             <button type="button" onclick="toggleMusic()">Наша песня - KETPE 🎵</button>
@@ -1270,7 +1442,7 @@
                 ты ни о чем не переживала и просто позволила себе быть счастливой рядом со мной.
             </p>
             <div class="invite-info">
-                <span>📍 Место встречи: секретное, такси отвезет тебя к мне.</span>
+                <span>📍 Место встречи: секретное, такси отвезет тебя ко мне.</span>
                 <span>👗 Дресс-код: любая одежда - в любом образе ты у меня самая красивая.</span>
                 <span>🕒 Время: 16:00</span>
                 <span>📅 Дата: 16.11.2025</span>
@@ -1283,7 +1455,7 @@
                 Я приду 💖
             </button>
             <div class="invite-footer">
-                Такси заберет тебя, а я встречу тебя с улыбкой и очень счастливыми глазами 💗
+                Такси заберет тебя, а я встречу с улыбкой и очень счастливыми глазами 💗
             </div>
         </div>
 
@@ -1327,12 +1499,14 @@
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-            <div style="margin-top:6px;">
+            <div style="margin-top:6px; text-align:left;">
                 Мы уже сделали первые шаги. Остальное впереди, и я хочу идти к этому вместе с тобой.
             </div>
         </div>
 
-        <div class="divider-line"><span>· · · 💗 · · ·</span></div>
+        <div class="divider-line">
+            <span class="divider-inner">· · · <span class="divider-heart">💗</span> · · ·</span>
+        </div>
 
         <!-- Окошки -->
 
@@ -1425,18 +1599,18 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>1. Наш вечер в Астане.</b></p>
                     <p>
-                        <b>1. Наш вечер в Астане.</b><br>
                         Когда мы уже учимся там, гуляем по городу после пар и просто знаем,
                         что это наш общий новый этап.
                     </p>
+                    <p><b>2. Наш день без дел.</b></p>
                     <p>
-                        <b>2. Наш день без дел.</b><br>
                         Когда мы просто вместе дома, без планов и гонки. Фильмы, еда,
                         разговоры и чувство, что никуда не надо спешить.
                     </p>
+                    <p><b>3. Наш маленький "мы справились".</b></p>
                     <p>
-                        <b>3. Наш маленький "мы справились".</b><br>
                         Когда оглядываемся назад и понимаем, что через все трудности
                         все равно дошли до этого места вместе.
                     </p>
@@ -1452,6 +1626,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>Пять причин, почему именно ты.</b></p>
                     <ul>
                         <li>С тобой жизнь не пустая, а живая.</li>
                         <li>Впервые я хочу идти с кем-то до конца.</li>
@@ -1471,6 +1646,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>Мои слова на сейчас.</b></p>
                     <p id="say-now"></p>
                 </div>
             </div>
@@ -1484,6 +1660,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>Мини-счётчик хороших моментов.</b></p>
                     <div class="smile-counter">
                         <div id="smile-line" class="smile-line">
                             Сегодня ты улыбалась: 0 раз.
@@ -1508,6 +1685,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>Запомни, пожалуйста.</b></p>
                     <p>Ты не "слишком эмоциональная" - ты чувствуешь глубоко.</p>
                     <p>Ты не "мешаешь" - ты важна. Я сам выбрал быть с тобой.</p>
                     <p>Ты не "проблема" - ты человек, которого я хочу поддерживать, а не исправлять.</p>
@@ -1524,6 +1702,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>Когда ты просто есть.</b></p>
                     <p>
                         Даже если ты ничего не пишешь, сам факт, что ты есть, уже меняет мой день.
                         У меня больше мотивации, планов и причин стараться.
@@ -1544,6 +1723,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>На случай сомнений.</b></p>
                     <p>
                         Если тебе когда-нибудь покажется, что мне все равно, посмотри на этот сайт.
                     </p>
@@ -1563,6 +1743,7 @@
                     <span class="section-arrow">▼</span>
                 </button>
                 <div class="section-body">
+                    <p><b>На очень сложные дни.</b></p>
                     <p>
                         Если когда-нибудь нам будет очень тяжело и мы не будем понимать, что делать,
                         я хочу, чтобы ты вспомнила не наши ссоры, а именно этот сайт.
@@ -1585,7 +1766,8 @@
             </div>
 
             <div class="quiet-block">
-                <b>Что бы ни менялось на этом сайте, одно не меняется:</b> я за тебя.
+                <b>Что бы ни менялось на этом сайте, одно не меняется:</b>
+                <p class="support-text">я за тебя.</p>
             </div>
         </div>
 
@@ -1605,6 +1787,8 @@
         </div>
     </div>
 </div>
+
+<button id="to-top" class="to-top-btn" type="button">💗</button>
 
 <audio id="loveSong" loop>
     <source src="ketpe.mp3.mp3" type="audio/mpeg">
@@ -1984,6 +2168,11 @@
             } else {
                 themeToggle.innerHTML = "<span>🌙</span><span>Ночь</span>";
             }
+            const mainCard = document.querySelector(".card");
+            if (mainCard) {
+                mainCard.classList.add("theme-bump");
+                setTimeout(() => mainCard.classList.remove("theme-bump"), 460);
+            }
             vibe(20);
         });
     }
@@ -2066,6 +2255,39 @@
             sigSecret.classList.toggle("show");
             vibe(20);
         });
+    }
+
+    // кнопка "вверх"
+    const toTop = document.getElementById("to-top");
+    function handleScroll() {
+        if (!toTop) return;
+        if (window.scrollY > 400) {
+            toTop.classList.add("show");
+        } else {
+            toTop.classList.remove("show");
+        }
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    if (toTop) {
+        toTop.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            vibe(25);
+        });
+    }
+
+    // подсветка подписи внизу один раз
+    const footerStamp = document.querySelector(".footer-stamp");
+    if (footerStamp) {
+        const footObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    footerStamp.classList.add("highlight");
+                    footObs.disconnect();
+                }
+            });
+        }, { threshold: 0.7 });
+        footObs.observe(footerStamp);
     }
 </script>
 
